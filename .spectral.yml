@@ -1,31 +1,3 @@
-functions:
-- my-own-equal-func
-rules:
-  must-provide-api-audience:
-    description: info.x-audience is missing (https://opensource.zalando.com/restful-api-guidelines/#219)
-    given: $.info
-    severity: error
-    then:
-      field: x-audience
-      function: truthy
-  must-provide-valid-api-audience:
-    description: info.x-audience contains invalid audience (https://opensource.zalando.com/restful-api-guidelines/#219)
-    given: $.info.x-audience
-    severity: error
-    then:
-      function: enumeration
-      functionOptions:
-        values:
-        - component-internal
-        - business-unit-internal
-        - company-internal
-        - external-partner
-        - external-public
-  should-be-gnu-licensed:
-    description: should be GNU licensed
-    given: $.info.license.name
-    severity: warn
-    then:
-      function: my-own-equal-func
-      functionOptions:
-        value: GNU
+extends:
+- ruleset-1.yml # can also be npm module or url
+- ruleset-2.yml

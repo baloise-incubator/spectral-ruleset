@@ -1,0 +1,11 @@
+functions:
+- my-own-equal-func
+rules:
+  should-be-gnu-licensed:
+    description: should be GNU licensed
+    given: $.info.license.name
+    severity: warn
+    then:
+      function: my-own-equal-func
+      functionOptions:
+        value: GNU
