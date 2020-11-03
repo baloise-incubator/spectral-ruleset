@@ -1,0 +1,15 @@
+{
+  "name": "spectral-playground",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "christiansiegel",
+  "license": "MIT",
+  "devDependencies": {
+    "@stoplight/spectral": "^5.7.1",
+    "chai": "^4.2.0",
+    "js-yaml": "^3.14.0",
+    "mocha": "^8.2.0"
+  }
+}
