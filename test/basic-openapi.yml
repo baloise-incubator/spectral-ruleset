@@ -13,4 +13,19 @@ tags:
   - name: bar
 servers:
   - url: https://example.com
-paths: {}
+paths:
+  /pet:
+    patch:
+      description: update a pet
+      operationId: update-pet
+      tags: [foo]
+      responses:
+        '200':
+          description: ok
+          content: {}
+        '500':
+          description: server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: 'https://opensource.zalando.com/problem/schema.yaml#/Problem'

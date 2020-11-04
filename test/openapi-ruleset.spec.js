@@ -22,7 +22,7 @@ describe('OpenAPI linter', () => {
 
   it('should accept basic api spec', async () => {
     const result = await lint(basicOpenApi)
-    expect(result).to.be.empty
+    expect(result, `errors: ${JSON.stringify(result)}`).to.be.empty
   });
 
   describe('license rules', () => {
