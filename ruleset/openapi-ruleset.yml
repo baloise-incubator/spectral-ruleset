@@ -1,0 +1,41 @@
+functions:
+  - my-own-equal-func
+
+#extends: [[spectral:oas, all]]
+
+rules:
+  should-have-license:
+    description: should have a license
+    given: $.info
+    severity: warn
+    then:
+      field: license
+      function: truthy
+  should-be-gnu-licensed:
+    description: should be GNU licensed
+    given: $.info.license.name
+    severity: warn
+    then:
+      function: my-own-equal-func
+      functionOptions:
+        value: GNU
+  must-provide-api-audience:
+    description: info.x-audience is missing (https://opensource.zalando.com/restful-api-guidelines/#219)
+    given: $.info
+    severity: error
+    then:
+      field: x-audience
+      function: truthy
+  must-provide-valid-api-audience:
+    description: info.x-audience contains invalid audience (https://opensource.zalando.com/restful-api-guidelines/#219)
+    given: $.info.x-audience
+    severity: error
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+        - component-internal
+        - business-unit-internal
+        - company-internal
+        - external-partner
+        - external-public

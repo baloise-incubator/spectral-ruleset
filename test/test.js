@@ -8,7 +8,7 @@ const util = require('./util.js');
 const lint = async (openApi) => {
   const opts = process.env.http_proxy ? { proxyUri: process.env.http_proxy } : {}
   const spectral = new Spectral(opts)
-  await spectral.loadRuleset(join(__dirname, '../.spectral.yml'));
+  await spectral.loadRuleset(join(__dirname, '../ruleset/openapi-ruleset.yml'));
   return await spectral.run(openApi)
 }
 
