@@ -1,4 +1,4 @@
-const { Spectral } = require("@stoplight/spectral");
+const { Spectral, isOpenApiv3 } = require("@stoplight/spectral");
 const { DiagnosticSeverity } = require("@stoplight/types");
 const { join } = require('path');
 const expect = require('chai').expect
@@ -8,6 +8,7 @@ const util = require('./util.js');
 const lint = async (openApi) => {
   const opts = process.env.http_proxy ? { proxyUri: process.env.http_proxy } : {}
   const spectral = new Spectral(opts)
+  spectral.registerFormat("oas3", isOpenApiv3);
   await spectral.loadRuleset(join(__dirname, '../ruleset/openapi-ruleset.yml'));
   return await spectral.run(openApi)
 }

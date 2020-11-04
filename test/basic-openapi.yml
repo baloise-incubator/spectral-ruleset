@@ -1,8 +1,16 @@
-openapi: "3.0.0"
+openapi: 3.0.0
 info:
   x-audience: company-internal
   version: 1.0.0
   title: API Title
+  description: My fancy API
   license:
     name: GNU
-paths: []
+  contact:
+    name: me
+tags:
+  - name: foo
+  - name: bar
+servers:
+  - url: https://example.com
+paths: {}

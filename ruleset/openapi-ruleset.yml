@@ -1,9 +1,16 @@
 functions:
   - my-own-equal-func
 
-#extends: [[spectral:oas, all]]
+extends: [[spectral:oas, all]] # re-use all spectral rules (https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
 
 rules:
+  contact-properties: off # could also just decrease severity or overwrite rule
+  openapi-tags-alphabetical: off
+  oas3-server-not-example.com: off
+  info-license: off
+  license-url: off
+  tag-description: off
+
   should-have-license:
     description: should have a license
     given: $.info
