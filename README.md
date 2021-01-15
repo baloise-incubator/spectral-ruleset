@@ -12,9 +12,6 @@ npx @stoplight/spectral lint example/example-openapi.yml
 
 # or reference the ruleset via url
 npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-playground/main/ruleset/openapi-ruleset.yml
-
-# custom ruleset for e.g. kafka topic CRDs
-npx @stoplight/spectral lint example/example-kafka-topic.yml --ignore-unknown-format --ruleset ruleset/kafka-topic-ruleset.yml
 ```
 
 ## run tests
