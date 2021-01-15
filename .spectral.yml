@@ -1,1 +1,87 @@
-extends: [./ruleset/openapi-ruleset.yml]
+functions:
+  - my-own-equal-func
+  - deep-equal
+
+extends: [[spectral:oas, all]] # re-use all spectral rules (https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
+
+rules:
+  contact-properties: off # could also just decrease severity or overwrite rule
+  openapi-tags-alphabetical: off
+  oas3-server-not-example.com: off
+  info-license: off
+  license-url: off
+  tag-description: off
+  operation-default-response: off
+
+  should-have-license:
+    description: should have a license
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+  should-be-gnu-licensed:
+    description: should be GNU licensed
+    severity: warn
+    given: $.info.license.name
+    then:
+      function: my-own-equal-func
+      functionOptions:
+        value: GNU
+  must-provide-api-audience:
+    description: info.x-audience is missing (https://opensource.zalando.com/restful-api-guidelines/#219)
+    severity: error
+    given: $.info
+    then:
+      field: x-audience
+      function: truthy
+  must-provide-valid-api-audience:
+    description: info.x-audience contains invalid audience (https://opensource.zalando.com/restful-api-guidelines/#219)
+    severity: error
+    given: $.info.x-audience
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+        - component-internal
+        - business-unit-internal
+        - company-internal
+        - external-partner
+        - external-public
+
+  response-should-have-content:
+    description: response should define content
+    severity: error
+    given: $.paths.*[?( @property.match(/^(get|put|post|delete|options|head|patch|trace)$/) )].responses.*
+    then:
+      field: content
+      function: truthy
+
+  4xx-and-5xx-should-return-application-problem-json:
+    description: 4xx and 5xx should return content type application/problem+json
+    severity: error
+    given: $.paths.*[?( @property.match(/^(get|put|post|delete|options|head|patch|trace)$/) )].responses[?( @property.match(/^(4..|5..)$/) )].content
+    then:
+      field: application/problem+json
+      function: truthy
+
+  application-problem-json-schema-ref:
+    severity: error
+    given: $.paths.*[?( @property.match(/^(get|put|post|delete|options|head|patch|trace)$/) )].responses[?( @property.match(/^(4..|5..)$/) )].content.application/problem+json.schema
+    then:
+      - field: type
+        function: deep-equal
+        functionOptions: { expected: object }
+      - field: properties.type
+        function: truthy
+      - field: properties.type.type
+        function: truthy
+      - field: properties.type.type
+        function: deep-equal
+        functionOptions: { expected: string }
+      - field: properties.type.format
+        function: truthy
+      - field: properties.type.format
+        function: deep-equal
+        functionOptions: { expected: uri }
+      # ...more asserts to check if Probem schema is as expected

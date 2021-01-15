@@ -9,7 +9,7 @@ const lint = async (openApi) => {
   const opts = process.env.http_proxy ? { proxyUri: process.env.http_proxy } : {}
   const spectral = new Spectral(opts)
   spectral.registerFormat("oas3", isOpenApiv3);
-  await spectral.loadRuleset(join(__dirname, '../ruleset/openapi-ruleset.yml'));
+  await spectral.loadRuleset(join(__dirname, '../.spectral.yml'));
   return await spectral.run(openApi)
 }
 

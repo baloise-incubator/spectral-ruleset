@@ -11,7 +11,7 @@ Playground for experiments with API Linter https://github.com/stoplightio/spectr
 npx @stoplight/spectral lint example/example-openapi.yml
 
 # or reference the ruleset via url
-npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-playground/main/ruleset/openapi-ruleset.yml
+npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-playground/main/.spectral.yml
 ```
 
 ## run tests
