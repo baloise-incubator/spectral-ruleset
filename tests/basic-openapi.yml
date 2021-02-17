@@ -1,5 +1,6 @@
 openapi: 3.0.0
 info:
+  x-api-id: d0184f38-b98d-11e7-9c56-68f728c1ba70
   x-audience: company-internal
   version: 1.0.0
   title: API Title
@@ -7,7 +8,10 @@ info:
   license:
     name: GNU
   contact:
-    name: me
+    name: team x
+    url: www.team-x.com
+    email: team@x.com
+
 tags:
   - name: foo
   - name: bar

@@ -1,87 +1,141 @@
+documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
+
 functions:
   - my-own-equal-func
   - deep-equal
 
-extends: [[spectral:oas, all]] # re-use all spectral rules (https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
-
 rules:
-  contact-properties: off # could also just decrease severity or overwrite rule
-  openapi-tags-alphabetical: off
-  oas3-server-not-example.com: off
-  info-license: off
-  license-url: off
-  tag-description: off
-  operation-default-response: off
+  # 4. Meta information
+  # => https://opensource.zalando.com/restful-api-guidelines/#meta-information
 
-  should-have-license:
-    description: should have a license
-    severity: warn
+  # MUST contain API meta information [218]
+  # => https://opensource.zalando.com/restful-api-guidelines/#218
+
+  must-have-info:
+    message: Missing `#/info`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $
+    then:
+      field: info
+      function: truthy
+
+  must-have-info-title:
+    message: Missing `#/info/title`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
     given: $.info
     then:
-      field: license
+      field: title
       function: truthy
-  should-be-gnu-licensed:
-    description: should be GNU licensed
-    severity: warn
-    given: $.info.license.name
+
+  must-have-info-version:
+    message: Missing `#/info/version`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info
     then:
-      function: my-own-equal-func
-      functionOptions:
-        value: GNU
-  must-provide-api-audience:
-    description: info.x-audience is missing (https://opensource.zalando.com/restful-api-guidelines/#219)
+      field: version
+      function: truthy
+
+  must-have-info-description:
+    message: Missing `#/info/description`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: truthy
+
+  must-have-info-contact:
+    message: Missing `#/info/contact`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  must-have-info-contact-name:
+    message: Missing `#/info/contact/name`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info.contact
+    then:
+      field: name
+      function: truthy
+
+  must-have-info-contact-url:
+    message: Missing `#/info/contact/url`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info.contact
+    then:
+      field: url
+      function: truthy
+
+  must-have-info-contact-email:
+    message: Missing `#/info/contact/email`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info.contact
+    then:
+      field: email
+      function: truthy
+
+  must-have-info-x-api-id:
+    message: Missing `#/info/x-api-id`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+    severity: error
+    given: $.info
+    then:
+      field: x-api-id
+      function: truthy
+
+  must-have-info-x-audience:
+    message: Missing `#/info/x-audience`
+    description: MUST contain API meta information [218]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
     severity: error
     given: $.info
     then:
       field: x-audience
       function: truthy
-  must-provide-valid-api-audience:
-    description: info.x-audience contains invalid audience (https://opensource.zalando.com/restful-api-guidelines/#219)
+
+  # MUST use semantic versioning [116]
+  # => https://opensource.zalando.com/restful-api-guidelines/#116
+
+  must-use-semantic-versioning:
+    message: Value `#/info/version` {{error}}
+    description: MUST use semantic versioning [116]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#116
     severity: error
-    given: $.info.x-audience
+    given: $.info.version
     then:
-      function: enumeration
+      function: pattern
       functionOptions:
-        values:
-        - component-internal
-        - business-unit-internal
-        - company-internal
-        - external-partner
-        - external-public
+        match: '^[0-9]+\.[0-9]+\.[0-9]+$'
 
-  response-should-have-content:
-    description: response should define content
-    severity: error
-    given: $.paths.*[?( @property.match(/^(get|put|post|delete|options|head|patch|trace)$/) )].responses.*
-    then:
-      field: content
-      function: truthy
+  # MUST provide API identifiers [215]
+  # => https://opensource.zalando.com/restful-api-guidelines/#215
 
-  4xx-and-5xx-should-return-application-problem-json:
-    description: 4xx and 5xx should return content type application/problem+json
+  must-provide-api-identifiers:
+    message: Value `#/info/x-api-id` {{error}}
+    description: MUST provide API identifiers [215]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#215
     severity: error
-    given: $.paths.*[?( @property.match(/^(get|put|post|delete|options|head|patch|trace)$/) )].responses[?( @property.match(/^(4..|5..)$/) )].content
+    given: $.info.x-api-id
     then:
-      field: application/problem+json
-      function: truthy
+      function: pattern
+      functionOptions:
+        match: ^[a-z0-9][a-z0-9-:.]{6,62}[a-z0-9]$
 
-  application-problem-json-schema-ref:
-    severity: error
-    given: $.paths.*[?( @property.match(/^(get|put|post|delete|options|head|patch|trace)$/) )].responses[?( @property.match(/^(4..|5..)$/) )].content.application/problem+json.schema
-    then:
-      - field: type
-        function: deep-equal
-        functionOptions: { expected: object }
-      - field: properties.type
-        function: truthy
-      - field: properties.type.type
-        function: truthy
-      - field: properties.type.type
-        function: deep-equal
-        functionOptions: { expected: string }
-      - field: properties.type.format
-        function: truthy
-      - field: properties.type.format
-        function: deep-equal
-        functionOptions: { expected: uri }
-      # ...more asserts to check if Probem schema is as expected
