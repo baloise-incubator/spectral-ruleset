@@ -9,7 +9,7 @@
   "author": "christiansiegel",
   "license": "MIT",
   "devDependencies": {
-    "@stoplight/spectral": "5.7.1",
+    "@stoplight/spectral": "5.8.1",
     "@types/jest": "26.0.20",
     "@types/js-yaml": "4.0.0",
     "@typescript-eslint/eslint-plugin": "4.15.1",
