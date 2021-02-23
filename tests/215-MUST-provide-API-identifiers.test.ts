@@ -2,7 +2,7 @@ import { DiagnosticSeverity } from '@stoplight/types';
 import { loadOpenApiSpec, lint } from './helpers';
 
 describe('MUST provide API identifiers [215]', () => {
-  test('#/info/x-api-id matches UUID pattern', async () => {
+  test('Detect if `x-api-id` does not match UUID pattern', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.info['x-api-id'] = 'xxx';
     const result = await lint(openApi);

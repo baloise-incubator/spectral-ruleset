@@ -11,22 +11,57 @@ info:
     name: team x
     url: www.team-x.com
     email: team@x.com
-
 tags:
   - name: foo
   - name: bar
 servers:
   - url: https://example.com
 paths:
-  /pet:
-    patch:
-      description: update a pet
-      operationId: update-pet
+  /example:
+    get:
+      description: get an example
+      operationId: get-example
       tags: [foo]
       responses:
         '200':
           description: ok
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Example'
+        '500':
+          description: server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+    patch:
+      description: update an example
+      operationId: update-example
+      tags: [foo]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  content:
+                    type: array
+                    items:
+                      properties:
+                        foo: {}
         '500':
           description: server error
           content:
@@ -36,6 +71,15 @@ paths:
 
 components:
   schemas:
+    Example:
+      type: object
+      properties:
+        name:
+          type: string
+        foo:
+          properties:
+            bar:
+              type: integer
     Problem: # from https://opensource.zalando.com/problem/schema.yaml#/Problem
       type: object
       properties:

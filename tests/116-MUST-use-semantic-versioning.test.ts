@@ -2,7 +2,7 @@ import { DiagnosticSeverity } from '@stoplight/types';
 import { loadOpenApiSpec, lint } from './helpers';
 
 describe('MUST use semantic versioning [116]', () => {
-  test('#/info/version matches SemVer pattern', async () => {
+  test('Detect if `version` does not match SemVer pattern', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.info.version = '47.11';
     const result = await lint(openApi);
