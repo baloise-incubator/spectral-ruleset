@@ -29,7 +29,7 @@ rules:
     description: MUST property names must be ASCII snake_case [118]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#118
     severity: error
-    given: $.paths.*.*.responses.*.content..schema..properties.*~
+    given: $.paths.*.*[responses,requestBody]..content..schema..properties.*~
     then:
       function: pattern
       functionOptions:
