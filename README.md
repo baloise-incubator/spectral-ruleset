@@ -173,7 +173,7 @@ npm run lint-fix # format source files
 | [#237][#237] | [SHOULD design complex query languages using JSON][#237] | - |
 | [#238][#238] | [SHOULD use standardized property formats][#238] | - |
 | [#239][#239] | [SHOULD encode embedded binary data in `base64url`][#239] | - |
-| [#240][#240] | [SHOULD declare enum values using UPPER_SNAKE_CASE format][#240] | - |
+| [#240][#240] | [SHOULD declare enum values using UPPER_SNAKE_CASE format][#240] | :heavy_check_mark: |
 | [#241][#241] | [MAY expose compound keys as resource identifiers][#241] | - |
 
 [#100]: https://opensource.zalando.com/restful-api-guidelines/#100
