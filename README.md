@@ -4,7 +4,7 @@
 
 Playground for experiments with API Linter https://github.com/stoplightio/spectral
 
-## try it out
+## Use it
 
 ```bash
 # default openapi ruleset defined in .spectral.yml
@@ -14,14 +14,30 @@ npx @stoplight/spectral lint example/example-openapi.yml
 npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-playground/main/.spectral.yml
 ```
 
-## run tests
+## Development
+
+### Adding a new Rule
+
+1. Choose a new, unsupported rule from the table below. For example [#151 MUST specify success and error responses][#151].
+2. Make sure `tests/fixtures/base-openapi.yml` satisfies the rule.
+3. Add a test `tests/151-MUST-specify-success-and-error-responses.test.ts` that
+    1. Takes the `base-openapi.yaml` as input
+    2. Modifies it to break the new rule
+    3. Expect that spectral finds the error (this will fail for now)
+4. Extend `.spectral.yml` with the new rule, so that the previously added test succeeds. See https://meta.stoplight.io/docs/spectral/docs/guides/4-custom-rulesets.md on how to define custom rules.
+5. Add a :heavy_check_mark: to the table below.
+5. Create a PR
+
+## Setup
 
 ```bash
-npm i
+npm install
 npm run test
+npm run lint
+npm run lint-fix # format source files
 ```
 
-## currently supported rules from the [zalando restful-api-guidelines](https://opensource.zalando.com/restful-api-guidelines/)
+## Currently supported rules from the [zalando restful-api-guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 
 <!-- table created with `node scripts/todo.js` -->
 | id | title |supported |
