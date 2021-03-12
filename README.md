@@ -1,8 +1,8 @@
-[![Gitpod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/christiansiegel/spectral-playground) 
+[![Gitpod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/christiansiegel/spectral-ruleset) 
 
-# spectral-playground
+# spectral-ruleset
 
-Playground for experiments with API Linter https://github.com/stoplightio/spectral
+Custom [Spectral API Linter](https://github.com/stoplightio/spectral) ruleset for [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/).
 
 ## Use it
 
@@ -11,7 +11,7 @@ Playground for experiments with API Linter https://github.com/stoplightio/spectr
 npx @stoplight/spectral lint example/example-openapi.yml
 
 # or reference the ruleset via url
-npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-playground/main/.spectral.yml
+npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-ruleset/main/.spectral.yml
 ```
 
 ## Development
