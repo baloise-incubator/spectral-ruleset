@@ -80,6 +80,11 @@ components:
           properties:
             bar:
               type: integer
+        xenum:
+          type: string
+          x-extensible-enum:
+            - FOO
+            - BAR
     Problem: # from https://opensource.zalando.com/problem/schema.yaml#/Problem
       type: object
       properties:

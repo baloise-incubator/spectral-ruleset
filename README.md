@@ -54,7 +54,7 @@ npm run lint-fix # format source files
 | [#109][#109] | [SHOULD design APIs conservatively][#109] | - |
 | [#110][#110] | [MUST always return JSON objects as top-level data structures][#110] | :heavy_check_mark: |
 | [#111][#111] | [MUST treat Open API specification as open for extension by default][#111] | - |
-| [#112][#112] | [SHOULD used open-ended list of values (`x-extensible-enum`) for enumerations][#112] | - |
+| [#112][#112] | [SHOULD used open-ended list of values (`x-extensible-enum`) for enumerations][#112] | :heavy_check_mark: |
 | [#113][#113] | [SHOULD avoid versioning][#113] | - |
 | [#114][#114] | [MUST use media type versioning][#114] | - |
 | [#115][#115] | [MUST not use URI versioning][#115] | - |

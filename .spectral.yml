@@ -16,6 +16,18 @@ rules:
     then:
       function: is-object-schema
 
+  # SHOULD used open-ended list of values (x-extensible-enum) for enumerations [112]
+  # => https://opensource.zalando.com/restful-api-guidelines/#112
+
+  should-use-x-extensible-enum:
+    message: 'Should use `x-extensible-enum` instead of `enum`'
+    description: SHOULD used open-ended list of values (x-extensible-enum) for enumerations [112]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#112
+    severity: warn
+    given: $.paths..[?(@.type=='string')].enum
+    then:
+      function: undefined
+
   # MUST use semantic versioning [116]
   # => https://opensource.zalando.com/restful-api-guidelines/#116
 
