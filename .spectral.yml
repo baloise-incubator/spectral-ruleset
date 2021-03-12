@@ -1,10 +1,21 @@
 documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
 functions:
-  - my-own-equal-func
-  - deep-equal
+  - is-object-schema
 
 rules:
+  # MUST always return JSON objects as top-level data structures [110]
+  # => https://opensource.zalando.com/restful-api-guidelines/#110
+
+  must-always-return-json-objects-as-top-level-data-structures:
+    message: 'Top-level data structure must be an object'
+    description: MUST always return JSON objects as top-level data structures [110]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#110
+    severity: error
+    given: $.paths.*.*[responses,requestBody]..content..schema
+    then:
+      function: is-object-schema
+
   # MUST use semantic versioning [116]
   # => https://opensource.zalando.com/restful-api-guidelines/#116
 

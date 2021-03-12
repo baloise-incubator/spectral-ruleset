@@ -52,7 +52,7 @@ npm run lint-fix # format source files
 | [#107][#107] | [SHOULD prefer compatible extensions][#107] | - |
 | [#108][#108] | [MUST prepare clients accept compatible API extensions][#108] | - |
 | [#109][#109] | [SHOULD design APIs conservatively][#109] | - |
-| [#110][#110] | [MUST always return JSON objects as top-level data structures][#110] | - |
+| [#110][#110] | [MUST always return JSON objects as top-level data structures][#110] | :heavy_check_mark: |
 | [#111][#111] | [MUST treat Open API specification as open for extension by default][#111] | - |
 | [#112][#112] | [SHOULD used open-ended list of values (`x-extensible-enum`) for enumerations][#112] | - |
 | [#113][#113] | [SHOULD avoid versioning][#113] | - |
