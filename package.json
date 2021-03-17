@@ -12,7 +12,7 @@
     "email": "christian.siegel@baloise.ch",
     "url": "https://github.com/christiansiegel"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@stoplight/spectral": "5.8.1",
     "@types/jest": "26.0.20",
