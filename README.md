@@ -1,6 +1,8 @@
 [![Gitpod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/baloise-incubator/spectral-ruleset) 
 
-# spectral-ruleset
+# spectral-ruleset 
+
+**👷🚧🛠️ in development 👷🚧🛠️**
 
 Custom [Spectral API Linter](https://github.com/stoplightio/spectral) ruleset for [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/).
 
