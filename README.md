@@ -1,4 +1,4 @@
-[![Gitpod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/christiansiegel/spectral-ruleset) 
+[![Gitpod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/baloise-incubator/spectral-ruleset) 
 
 # spectral-ruleset
 
@@ -11,7 +11,7 @@ Custom [Spectral API Linter](https://github.com/stoplightio/spectral) ruleset fo
 npx @stoplight/spectral lint example/example-openapi.yml
 
 # or reference the ruleset via url
-npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/christiansiegel/spectral-ruleset/main/.spectral.yml
+npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/.spectral.yml
 ```
 
 ## Development
