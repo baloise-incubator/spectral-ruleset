@@ -70,7 +70,7 @@ npm run lint-fix # format source files
 | [#128][#128] | [SHOULD use standards for country, language and currency codes][#128] | - | - |
 | [#129][#129] | [MUST use lowercase separate words with hyphens for path segments][#129] | - | A |
 | [#130][#130] | [MUST use snake_case (never camelCase) for query parameters][#130] | - | B |
-| [#132][#132] | [SHOULD prefer hyphenated-pascal-case for HTTP header fields][#132] | - | - |
+| [#132][#132] | [SHOULD prefer hyphenated-pascal-case for HTTP header fields][#132] | - | B |
 | [#133][#133] | [MAY use standardized headers][#133] | - | - |
 | [#134][#134] | [MUST pluralize resource names][#134] | - | A |
 | [#135][#135] | [SHOULD not use /api as base path][#135] | - | ? |
