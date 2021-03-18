@@ -74,7 +74,7 @@ npm run lint-fix # format source files
 | [#133][#133] | [MAY use standardized headers][#133] | - | - |
 | [#134][#134] | [MUST pluralize resource names][#134] | - | A |
 | [#135][#135] | [SHOULD not use /api as base path][#135] | - | ? |
-| [#136][#136] | [MUST use normalized paths without empty path segments and trailing slashes][#136] | - | - |
+| [#136][#136] | [MUST use normalized paths without empty path segments and trailing slashes][#136] | - | B |
 | [#137][#137] | [MUST stick to conventional query parameters][#137] | - | - |
 | [#138][#138] | [MUST avoid actions — think about resources][#138] | - | A |
 | [#139][#139] | [SHOULD model complete business processes][#139] | - | - |
@@ -309,4 +309,3 @@ npm run lint-fix # format source files
 [#239]: https://opensource.zalando.com/restful-api-guidelines/#239
 [#240]: https://opensource.zalando.com/restful-api-guidelines/#240
 [#241]: https://opensource.zalando.com/restful-api-guidelines/#241
-
