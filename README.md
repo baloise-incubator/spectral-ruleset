@@ -46,7 +46,7 @@ npm run lint-fix # format source files
 | [#101][#101] | [MUST provide API specification using OpenAPI][#101] | - | A |
 | [#102][#102] | [SHOULD provide API user manual][#102] | - | C |
 | [#103][#103] | [MUST write APIs using U.S. English][#103] | - | A |
-| [#104][#104] | [MUST secure endpoints with OAuth 2.0][#104] | - | ? |
+| [#104][#104] | [MUST secure endpoints with OAuth 2.0][#104] | - | B |
 | [#105][#105] | [MUST define and assign permissions (scopes)][#105] | - | B |
 | [#106][#106] | [MUST not break backward compatibility][#106] | - | B |
 | [#107][#107] | [SHOULD prefer compatible extensions][#107] | - | ? |
