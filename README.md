@@ -62,7 +62,7 @@ npm run lint-fix # format source files
 | [#112][#112] | [SHOULD used open-ended list of values (`x-extensible-enum`) for enumerations][#112] | :heavy_check_mark: |
 | [#113][#113] | [SHOULD avoid versioning][#113] | - |
 | [#114][#114] | [MUST use media type versioning][#114] | - |
-| [#115][#115] | [MUST not use URI versioning][#115] | - |
+| [#115][#115] | [MUST not use URI versioning][#115] | :heavy_check_mark: |
 | [#116][#116] | [MUST use semantic versioning][#116] | :heavy_check_mark: |
 | [#118][#118] | [MUST property names must be ASCII snake_case (and never camelCase): `^[a-z_][a-z_0-9]*$`][#118] | :heavy_check_mark: |
 | [#120][#120] | [SHOULD pluralize array names][#120] | - |

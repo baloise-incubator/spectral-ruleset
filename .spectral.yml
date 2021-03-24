@@ -27,6 +27,20 @@ rules:
     given: $.paths..[?(@.type=='string')].enum
     then:
       function: undefined
+    
+  # MUST not use URI versioning [115]
+  # => https://opensource.zalando.com/restful-api-guidelines/#115
+
+  must-not-use-uri-versioning:
+    message: Path must not contain versioning
+    description: MUST not use URI versioning [115]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#115
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: /v[0-9]+/
 
   # MUST use semantic versioning [116]
   # => https://opensource.zalando.com/restful-api-guidelines/#116
@@ -70,7 +84,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: ^(([\/a-z][a-z\-\/]*)?({[^}]*})?)+$
+        match: ^(([\/a-z][a-z0-9\-\/]*)?({[^}]*})?)+$
 
   # MUST use snake_case (never camelCase) for query parameters [130]
   # => https://opensource.zalando.com/restful-api-guidelines/#130
