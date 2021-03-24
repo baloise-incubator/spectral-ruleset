@@ -42,6 +42,12 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Problem'
+        default:
+          description: unknown server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
     patch:
       description: update an example
       operationId: update-example
@@ -71,6 +77,12 @@ paths:
                         foo: {}
         '500':
           description: server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        default:
+          description: unknown server error
           content:
             application/problem+json:
               schema:

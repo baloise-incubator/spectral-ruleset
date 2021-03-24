@@ -172,12 +172,35 @@ rules:
     message: '{{error}}'
     description: SHOULD limit number of resource types [146]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#146
-    severity: error
+    severity: warn
     given: $.paths
     then:
       function: count-resource-types
       functionOptions:
         max: 8
+
+  # MUST specify success and error responses [151]
+  # => https://opensource.zalando.com/restful-api-guidelines/#151
+
+  must-specify-default-response:
+    message: Operation does not contain a default response
+    description: MUST specify success and error responses [151]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#151
+    severity: error
+    given: $.paths.*.*.responses
+    then:
+      field: default
+      function: truthy
+
+  must-use-problem-json-as-default-response:
+    message: Operation must use problem json as default response
+    description: MUST specify success and error responses [151]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#151
+    severity: error
+    given: $.paths.*.*.responses.default
+    then:
+      field: content.application/problem+json
+      function: truthy
 
   # MUST provide API identifiers [215]
   # => https://opensource.zalando.com/restful-api-guidelines/#215

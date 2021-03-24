@@ -94,7 +94,7 @@ npm run lint-fix # format source files
 | [#148][#148] | [MUST use HTTP methods correctly][#148] | - |
 | [#149][#149] | [MUST fulfill common method properties][#149] | - |
 | [#150][#150] | [MUST use standard HTTP status codes][#150] | - |
-| [#151][#151] | [MUST specify success and error responses][#151] | - |
+| [#151][#151] | [MUST specify success and error responses][#151] | :heavy_check_mark: |
 | [#152][#152] | [MUST use code 207 for batch or bulk requests][#152] | - |
 | [#153][#153] | [MUST use code 429 with headers for rate limits][#153] | - |
 | [#154][#154] | [MUST define collection format of header and query parameters][#154] | - |
