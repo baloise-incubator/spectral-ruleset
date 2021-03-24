@@ -118,7 +118,7 @@ npm run lint-fix # format source files
 | [#172][#172] | [SHOULD prefer standard media type name `application/json`][#172] | - |
 | [#173][#173] | [MUST use the common money object][#173] | - |
 | [#174][#174] | [MUST use common field names and semantics][#174] | - |
-| [#176][#176] | [MUST support problem JSON][#176] | - |
+| [#176][#176] | [MUST support problem JSON][#176] | :heavy_check_mark: |
 | [#177][#177] | [MUST not expose stack traces][#177] | - |
 | [#178][#178] | [MUST use `Content-*` headers correctly][#178] | - |
 | [#179][#179] | [MAY use `Content-Location` header][#179] | - |

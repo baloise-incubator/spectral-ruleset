@@ -36,8 +36,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Example'
-        '500':
-          description: server error
+        '404':
+          description: not found
           content:
             application/problem+json:
               schema:

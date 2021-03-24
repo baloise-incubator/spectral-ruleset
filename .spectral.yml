@@ -1,8 +1,9 @@
 documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
 functions:
-  - is-object-schema
   - count-resource-types
+  - is-object-schema
+  - is-problem-json-schema
 
 rules:
   # MUST always return JSON objects as top-level data structures [110]
@@ -201,6 +202,29 @@ rules:
     then:
       field: content.application/problem+json
       function: truthy
+
+  #MUST support problem JSON [176]
+  # => https://opensource.zalando.com/restful-api-guidelines/#176
+
+  must-use-problem-json-for-errors:
+    message: Error response must be application/problem+json
+    description: MUST support problem JSON [176]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#176
+    severity: error
+    given: $.paths.*.*.responses[?(@property.match(/^(4|5)/))]
+    then:
+      field: content.application/problem+json
+      function: truthy
+
+  must-use-valid-problem-json-schema:
+    message: '{{error}}'
+    description: MUST support problem JSON [176]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#176
+    severity: error
+    given: $.paths.*.*.responses.*.content.application/problem+json
+    then:
+      field: schema
+      function: is-problem-json-schema
 
   # MUST provide API identifiers [215]
   # => https://opensource.zalando.com/restful-api-guidelines/#215
