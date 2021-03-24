@@ -72,6 +72,20 @@ rules:
       functionOptions:
         match: ^(([\/a-z][a-z\-\/]*)?({[^}]*})?)+$
 
+  # MUST use snake_case (never camelCase) for query parameters [130]
+  # => https://opensource.zalando.com/restful-api-guidelines/#130
+
+  must-use-snake-case-for-query-parameters:
+    message: Query parameters must be snake_case
+    description: MUST use snake_case (never camelCase) for query parameters [130]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#130
+    severity: error
+    given: $.paths.*.*.parameters[?(@.in=='query')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z][_a-z0-9]*$
+
   # MUST use normalized paths without empty path segments and trailing slashes [136]
   # => https://opensource.zalando.com/restful-api-guidelines/#136
 
