@@ -2,6 +2,7 @@ documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
 functions:
   - is-object-schema
+  - count-resource-types
 
 rules:
   # MUST always return JSON objects as top-level data structures [110]
@@ -163,6 +164,20 @@ rules:
       function: pattern
       functionOptions:
         match: ^/
+
+  # SHOULD limit number of resource types [146]
+  # => https://opensource.zalando.com/restful-api-guidelines/#146
+
+  should-limit-number-of-resource-types:
+    message: '{{error}}'
+    description: SHOULD limit number of resource types [146]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#146
+    severity: error
+    given: $.paths
+    then:
+      function: count-resource-types
+      functionOptions:
+        max: 8
 
   # MUST provide API identifiers [215]
   # => https://opensource.zalando.com/restful-api-guidelines/#215

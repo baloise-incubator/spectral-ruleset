@@ -89,7 +89,7 @@ npm run lint-fix # format source files
 | [#143][#143] | [MUST identify resources and sub-resources via path segments][#143] | - |
 | [#144][#144] | [SHOULD only use UUIDs if necessary][#144] | - |
 | [#145][#145] | [MAY consider using (non-)nested URLs][#145] | - |
-| [#146][#146] | [SHOULD limit number of resource types][#146] | - |
+| [#146][#146] | [SHOULD limit number of resource types][#146] | :heavy_check_mark: |
 | [#147][#147] | [SHOULD limit number of sub-resource levels][#147] | - |
 | [#148][#148] | [MUST use HTTP methods correctly][#148] | - |
 | [#149][#149] | [MUST fulfill common method properties][#149] | - |

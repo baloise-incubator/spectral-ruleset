@@ -11,9 +11,9 @@ const check = (schema) => {
   }
 };
 
-module.exports = (actual) => {
+module.exports = (targetValue) => {
   try {
-    check(actual);
+    check(targetValue);
   } catch (ex) {
     return [
       {
