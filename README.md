@@ -62,7 +62,7 @@ npm run lint-fix # format source files
 | [#112][#112] | [SHOULD used open-ended list of values (`x-extensible-enum`) for enumerations][#112] | :heavy_check_mark: | - |
 | [#113][#113] | [SHOULD avoid versioning][#113] | - | B |
 | [#114][#114] | [MUST use media type versioning][#114] | - | - |
-| [#115][#115] | [MUST not use URI versioning][#115] | - | A |
+| [#115][#115] | [MUST not use URI versioning][#115] | :heavy_check_mark: | A |
 | [#116][#116] | [MUST use semantic versioning][#116] | :heavy_check_mark: | B |
 | [#118][#118] | [MUST property names must be ASCII snake_case (and never camelCase): `^[a-z_][a-z_0-9]*$`][#118] | :heavy_check_mark: | A |
 | [#120][#120] | [SHOULD pluralize array names][#120] | - | B |
@@ -73,13 +73,13 @@ npm run lint-fix # format source files
 | [#126][#126] | [SHOULD define dates properties compliant with RFC 3339][#126] | - | - |
 | [#127][#127] | [SHOULD define time durations and intervals properties conform to ISO 8601][#127] | - | - |
 | [#128][#128] | [SHOULD use standards for country, language and currency codes][#128] | - | - |
-| [#129][#129] | [MUST use lowercase separate words with hyphens for path segments][#129] | - | A |
-| [#130][#130] | [MUST use snake_case (never camelCase) for query parameters][#130] | - | B |
-| [#132][#132] | [SHOULD prefer hyphenated-pascal-case for HTTP header fields][#132] | - | B |
+| [#129][#129] | [MUST use lowercase separate words with hyphens for path segments][#129] | :heavy_check_mark: | A |
+| [#130][#130] | [MUST use snake_case (never camelCase) for query parameters][#130] | :heavy_check_mark: | B |
+| [#132][#132] | [SHOULD prefer hyphenated-pascal-case for HTTP header fields][#132] | :heavy_check_mark: | B |
 | [#133][#133] | [MAY use standardized headers][#133] | - | - |
 | [#134][#134] | [MUST pluralize resource names][#134] | - | A |
-| [#135][#135] | [SHOULD not use /api as base path][#135] | - | A |
-| [#136][#136] | [MUST use normalized paths without empty path segments and trailing slashes][#136] | - | B |
+| [#135][#135] | [SHOULD not use /api as base path][#135] | :heavy_check_mark: | A |
+| [#136][#136] | [MUST use normalized paths without empty path segments and trailing slashes][#136] | :heavy_check_mark: | B |
 | [#137][#137] | [MUST stick to conventional query parameters][#137] | - | - |
 | [#138][#138] | [MUST avoid actions — think about resources][#138] | - | A |
 | [#139][#139] | [SHOULD model complete business processes][#139] | - | - |
@@ -89,12 +89,12 @@ npm run lint-fix # format source files
 | [#143][#143] | [MUST identify resources and sub-resources via path segments][#143] | - | - |
 | [#144][#144] | [SHOULD only use UUIDs if necessary][#144] | - | - |
 | [#145][#145] | [MAY consider using (non-)nested URLs][#145] | - | - |
-| [#146][#146] | [SHOULD limit number of resource types][#146] | - | B |
+| [#146][#146] | [SHOULD limit number of resource types][#146] | :heavy_check_mark: | B |
 | [#147][#147] | [SHOULD limit number of sub-resource levels][#147] | - | B |
 | [#148][#148] | [MUST use HTTP methods correctly][#148] | - | A |
 | [#149][#149] | [MUST fulfill common method properties][#149] | - | - |
 | [#150][#150] | [MUST use standard HTTP status codes][#150] | - | - |
-| [#151][#151] | [MUST specify success and error responses][#151] | - | B |
+| [#151][#151] | [MUST specify success and error responses][#151] | :heavy_check_mark: | B |
 | [#152][#152] | [MUST use code 207 for batch or bulk requests][#152] | - | C |
 | [#153][#153] | [MUST use code 429 with headers for rate limits][#153] | - | C |
 | [#154][#154] | [MUST define collection format of header and query parameters][#154] | - | - |
@@ -118,7 +118,7 @@ npm run lint-fix # format source files
 | [#172][#172] | [SHOULD prefer standard media type name `application/json`][#172] | - | B |
 | [#173][#173] | [MUST use the common money object][#173] | - | - |
 | [#174][#174] | [MUST use common field names and semantics][#174] | - | - |
-| [#176][#176] | [MUST support problem JSON][#176] | - | - |
+| [#176][#176] | [MUST support problem JSON][#176] | :heavy_check_mark: | - |
 | [#177][#177] | [MUST not expose stack traces][#177] | - | - |
 | [#178][#178] | [MUST use `Content-*` headers correctly][#178] | - | - |
 | [#179][#179] | [MAY use `Content-Location` header][#179] | - | - |

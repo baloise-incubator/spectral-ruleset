@@ -22,6 +22,17 @@ paths:
       description: get an example
       operationId: get-example
       tags: [foo]
+      parameters:
+        - in: query
+          name: query_param_1
+          schema:
+            type: integer
+        - $ref: '#/components/parameters/QueryParamComponent'
+        - in: header
+          name: My-Header
+          schema:
+            type: integer
+        - $ref: '#/components/parameters/HeaderParamComponent'
       responses:
         '200':
           description: ok
@@ -29,8 +40,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Example'
-        '500':
-          description: server error
+        '404':
+          description: not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        default:
+          description: unknown server error
           content:
             application/problem+json:
               schema:
@@ -68,8 +85,25 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/Problem'
+        default:
+          description: unknown server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/Problem'
 
 components:
+  parameters:
+    QueryParamComponent:
+      in: query
+      name: query_param_from_component
+      schema:
+        type: integer
+    HeaderParamComponent:
+      in: header
+      name: Header-Param-From-Component
+      schema:
+        type: integer
   schemas:
     Example:
       type: object
