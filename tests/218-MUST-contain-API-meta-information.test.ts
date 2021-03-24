@@ -14,7 +14,7 @@ describe('MUST contain API meta information [218]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'oas3-schema',
-        message: 'Invalid OpenAPI v3 schema: Object should have required property `info`',
+        message: 'Object should have required property `info`.',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -26,7 +26,7 @@ describe('MUST contain API meta information [218]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'oas3-schema',
-        message: 'Invalid OpenAPI v3 schema: `info` property type should be object',
+        message: '`info` property type should be object.',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -38,7 +38,7 @@ describe('MUST contain API meta information [218]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'oas3-schema',
-        message: 'Invalid OpenAPI v3 schema: `info` property should have required property `title`',
+        message: '`info` property should have required property `title`.',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -50,7 +50,7 @@ describe('MUST contain API meta information [218]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'oas3-schema',
-        message: 'Invalid OpenAPI v3 schema: `info` property should have required property `version`',
+        message: '`info` property should have required property `version`.',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
