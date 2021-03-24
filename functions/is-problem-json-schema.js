@@ -17,56 +17,51 @@ properties:
     type: string
   instance:
     type: string
-    format: uri
 */
 
-module.exports = (targetValue) => {
-  if (targetValue.type !== 'object') {
-    return [
-      {
-        message: "Problem json must have type 'object'",
-      },
-    ];
+const assertProblemSchema = (schema) => {
+  if (schema.type !== 'object') {
+    throw "Problem json must have type 'object'";
   }
-  const type = (targetValue.properties || {}).type || {};
+  const type = (schema.properties || {}).type || {};
   if (type.type !== 'string' || type.format !== 'uri') {
-    return [
-      {
-        message: "Problem json must have property 'type' with type 'string' and format 'uri'",
-      },
-    ];
+    throw "Problem json must have property 'type' with type 'string' and format 'uri'";
   }
-  const title = (targetValue.properties || {}).title || {};
+  const title = (schema.properties || {}).title || {};
   if (title.type !== 'string') {
-    return [
-      {
-        message: "Problem json must have property 'title' with type 'string'",
-      },
-    ];
+    throw "Problem json must have property 'title' with type 'string'";
   }
-  const status = (targetValue.properties || {}).status || {};
+  const status = (schema.properties || {}).status || {};
   if (status.type !== 'integer' || status.format !== 'int32') {
-    return [
-      {
-        message: "Problem json must have property 'status' with type 'integer' and format 'in32'",
-      },
-    ];
+    throw "Problem json must have property 'status' with type 'integer' and format 'in32'";
   }
-  const detail = (targetValue.properties || {}).detail || {};
+  const detail = (schema.properties || {}).detail || {};
   if (detail.type !== 'string') {
+    throw "Problem json must have property 'detail' with type 'string'";
+  }
+  const instance = (schema.properties || {}).instance || {};
+  if (instance.type !== 'string') {
+    throw "Problem json must have property 'instance' with type 'string'";
+  }
+};
+
+const check = (schema) => {
+  const combinedSchemas = [...(schema.anyOf || []), ...(schema.oneOf || []), ...(schema.allOf || [])];
+  if (combinedSchemas.length > 0) {
+    combinedSchemas.forEach(check);
+  } else {
+    assertProblemSchema(schema);
+  }
+};
+
+module.exports = (targetValue) => {
+  try {
+    check(targetValue);
+  } catch (ex) {
     return [
       {
-        message: "Problem json must have property 'detail' with type 'string'",
+        message: ex,
       },
     ];
   }
-  const instance = (targetValue.properties || {}).instance || {};
-  if (instance.type !== 'string' || instance.format !== 'uri') {
-    return [
-      {
-        message: "Problem json must have property 'instance' with type 'string' and format 'uri'",
-      },
-    ];
-  }
-  return [];
 };
