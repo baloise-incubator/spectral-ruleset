@@ -72,6 +72,42 @@ rules:
       functionOptions:
         match: ^(([\/a-z][a-z\-\/]*)?({[^}]*})?)+$
 
+  # MUST use normalized paths without empty path segments and trailing slashes [136]
+  # => https://opensource.zalando.com/restful-api-guidelines/#136
+
+  must-use-normalized-paths-without-empty-path-segments:
+    message: Empty path segments are not allowed
+    description: MUST use normalized paths without empty path segments and trailing slashes [136]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#136
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: //
+
+  must-use-normalized-paths-without-trailing-slash:
+    message: Path with trailing slash is not allowed
+    description: MUST use normalized paths without empty path segments and trailing slashes [136]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#136
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: /$
+
+  must-use-normalized-paths-with-leading-slash:
+    message: Path must start with slash
+    description: MUST use normalized paths without empty path segments and trailing slashes [136]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#136
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^/
+
   # MUST provide API identifiers [215]
   # => https://opensource.zalando.com/restful-api-guidelines/#215
 
@@ -183,8 +219,6 @@ rules:
     then:
       field: x-audience
       function: truthy
-
-      
 
   # SHOULD declare enum values using UPPER_SNAKE_CASE format [240]
   # => https://opensource.zalando.com/restful-api-guidelines/#240
