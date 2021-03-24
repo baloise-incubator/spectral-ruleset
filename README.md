@@ -73,7 +73,7 @@ npm run lint-fix # format source files
 | [#126][#126] | [SHOULD define dates properties compliant with RFC 3339][#126] | - |
 | [#127][#127] | [SHOULD define time durations and intervals properties conform to ISO 8601][#127] | - |
 | [#128][#128] | [SHOULD use standards for country, language and currency codes][#128] | - |
-| [#129][#129] | [MUST use lowercase separate words with hyphens for path segments][#129] | - |
+| [#129][#129] | [MUST use lowercase separate words with hyphens for path segments][#129] | :heavy_check_mark: |
 | [#130][#130] | [MUST use snake_case (never camelCase) for query parameters][#130] | - |
 | [#132][#132] | [SHOULD prefer hyphenated-pascal-case for HTTP header fields][#132] | - |
 | [#133][#133] | [MAY use standardized headers][#133] | - |

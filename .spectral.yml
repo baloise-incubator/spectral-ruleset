@@ -58,6 +58,20 @@ rules:
       functionOptions:
         match: ^[a-z_][a-z_0-9]*$
 
+  # MUST use lowercase separate words with hyphens for path segments [129]
+  # => https://opensource.zalando.com/restful-api-guidelines/#129
+
+  must-use-lowercase-with-hypens-for-path-segements:
+    message: Path segments have to be lowercase separate words with hyphens
+    description: MUST use lowercase separate words with hyphens for path segments [129]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#129
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^(([\/a-z][a-z\-\/]*)?({[^}]*})?)+$
+
   # MUST provide API identifiers [215]
   # => https://opensource.zalando.com/restful-api-guidelines/#215
 
