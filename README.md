@@ -73,7 +73,7 @@ npm run lint-fix # format source files
 | [#132][#132] | [SHOULD prefer hyphenated-pascal-case for HTTP header fields][#132] | - | B |
 | [#133][#133] | [MAY use standardized headers][#133] | - | - |
 | [#134][#134] | [MUST pluralize resource names][#134] | - | A |
-| [#135][#135] | [SHOULD not use /api as base path][#135] | - | ? |
+| [#135][#135] | [SHOULD not use /api as base path][#135] | - | A |
 | [#136][#136] | [MUST use normalized paths without empty path segments and trailing slashes][#136] | - | B |
 | [#137][#137] | [MUST stick to conventional query parameters][#137] | - | - |
 | [#138][#138] | [MUST avoid actions — think about resources][#138] | - | A |
