@@ -100,6 +100,20 @@ rules:
       functionOptions:
         match: ^([A-Z][a-z]*)(-[A-Z0-9][a-z0-9]*)*$
 
+  # SHOULD not use /api as base path [135]
+  # => https://opensource.zalando.com/restful-api-guidelines/#135
+
+  should-not-use-api-as-base-path:
+    message: Path should not start with /api
+    description: SHOULD not use /api as base path [135]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#135
+    severity: warn
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: ^/api
+
   # MUST use normalized paths without empty path segments and trailing slashes [136]
   # => https://opensource.zalando.com/restful-api-guidelines/#136
 
