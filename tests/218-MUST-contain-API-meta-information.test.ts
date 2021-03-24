@@ -13,8 +13,8 @@ describe('MUST contain API meta information [218]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-have-info',
-        message: 'OpenAPI `info` must be present and an object.',
+        code: 'oas3-schema',
+        message: 'Invalid OpenAPI v3 schema: Object should have required property `info`',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -25,8 +25,8 @@ describe('MUST contain API meta information [218]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-have-info',
-        message: 'OpenAPI `info` must be present and an object.',
+        code: 'oas3-schema',
+        message: 'Invalid OpenAPI v3 schema: `info` property type should be object',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -37,8 +37,8 @@ describe('MUST contain API meta information [218]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-have-info-title',
-        message: 'Missing `info.title`.',
+        code: 'oas3-schema',
+        message: 'Invalid OpenAPI v3 schema: `info` property should have required property `title`',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -49,8 +49,8 @@ describe('MUST contain API meta information [218]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-have-info-version',
-        message: 'Missing `info.version`.',
+        code: 'oas3-schema',
+        message: 'Invalid OpenAPI v3 schema: `info` property should have required property `version`',
         severity: DiagnosticSeverity.Error,
       }),
     ]);

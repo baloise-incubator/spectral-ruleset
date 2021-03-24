@@ -1,3 +1,5 @@
+extends: base-ruleset.yml
+
 documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
 functions:
@@ -155,17 +157,6 @@ rules:
       functionOptions:
         notMatch: /$
 
-  must-use-normalized-paths-with-leading-slash:
-    message: Path must start with slash
-    description: MUST use normalized paths without empty path segments and trailing slashes [136]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#136
-    severity: error
-    given: $.paths.*~
-    then:
-      function: pattern
-      functionOptions:
-        match: ^/
-
   # SHOULD limit number of resource types [146]
   # => https://opensource.zalando.com/restful-api-guidelines/#146
 
@@ -244,39 +235,6 @@ rules:
 
   # MUST contain API meta information [218]
   # https://opensource.zalando.com/restful-api-guidelines/#218
-
-  must-have-info:
-    message: OpenAPI `info` must be present and an object.
-    description: MUST contain API meta information [218]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
-    severity: error
-    given: $
-    then:
-      field: info
-      function: schema
-      functionOptions:
-        schema:
-          type: object
-
-  must-have-info-title:
-    message: Missing `info.title`.
-    description: MUST contain API meta information [218]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
-    severity: error
-    given: $.info
-    then:
-      field: title
-      function: truthy
-
-  must-have-info-version:
-    message: Missing `info.version`.
-    description: MUST contain API meta information [218]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
-    severity: error
-    given: $.info
-    then:
-      field: version
-      function: truthy
 
   must-have-info-description:
     message: Missing `info.description`.

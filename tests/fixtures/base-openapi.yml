@@ -25,9 +25,13 @@ paths:
       parameters:
         - in: query
           name: query_param_1
+          schema:
+            type: integer
         - $ref: '#/components/parameters/QueryParamComponent'
         - in: header
           name: My-Header
+          schema:
+            type: integer
         - $ref: '#/components/parameters/HeaderParamComponent'
       responses:
         '200':
@@ -93,9 +97,13 @@ components:
     QueryParamComponent:
       in: query
       name: query_param_from_component
+      schema:
+        type: integer
     HeaderParamComponent:
       in: header
       name: Header-Param-From-Component
+      schema:
+        type: integer
   schemas:
     Example:
       type: object

@@ -26,16 +26,4 @@ describe('MUST use normalized paths without empty path segments and trailing sla
       }),
     ]);
   });
-  test('Detect path without leading slash', async () => {
-    const openApi = await loadOpenApiSpec('base-openapi.yml');
-    openApi.paths['foo'] = { ...openApi.paths['/example'] };
-    const result = await lint(openApi);
-    expect(result).toEqual([
-      expect.objectContaining({
-        code: 'must-use-normalized-paths-with-leading-slash',
-        message: 'Path must start with slash',
-        severity: DiagnosticSeverity.Error,
-      }),
-    ]);
-  });
 });
