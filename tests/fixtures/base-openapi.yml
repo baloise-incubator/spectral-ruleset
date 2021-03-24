@@ -26,6 +26,9 @@ paths:
         - in: query
           name: query_param_1
         - $ref: '#/components/parameters/QueryParamComponent'
+        - in: header
+          name: My-Header
+        - $ref: '#/components/parameters/HeaderParamComponent'
       responses:
         '200':
           description: ok
@@ -78,6 +81,9 @@ components:
     QueryParamComponent:
       in: query
       name: query_param_from_component
+    HeaderParamComponent:
+      in: header
+      name: Header-Param-From-Component
   schemas:
     Example:
       type: object

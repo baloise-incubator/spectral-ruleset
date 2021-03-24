@@ -86,6 +86,20 @@ rules:
       functionOptions:
         match: ^[a-z][_a-z0-9]*$
 
+  # SHOULD prefer hyphenated-pascal-case for HTTP header fields [132]
+  # => https://opensource.zalando.com/restful-api-guidelines/#132
+
+  should-use-hyphenated-pascal-case-for-header-parameters:
+    message: Header parameters should be Hyphenated-Pascal-Case
+    description: SHOULD prefer hyphenated-pascal-case for HTTP header fields [132]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#132
+    severity: warn
+    given: $.paths.*.*.parameters[?(@.in=='header')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: ^([A-Z][a-z]*)(-[A-Z0-9][a-z0-9]*)*$
+
   # MUST use normalized paths without empty path segments and trailing slashes [136]
   # => https://opensource.zalando.com/restful-api-guidelines/#136
 
