@@ -1,4 +1,4 @@
-extends: base-ruleset.yml
+extends: [[spectral:oas, off]]
 
 documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
@@ -8,6 +8,9 @@ functions:
   - is-problem-json-schema
 
 rules:
+  # https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md#oas3-schema
+  oas3-schema: true
+
   # MUST always return JSON objects as top-level data structures [110]
   # => https://opensource.zalando.com/restful-api-guidelines/#110
 
