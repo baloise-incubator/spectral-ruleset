@@ -5,7 +5,7 @@ describe('MUST support problem JSON [176]', () => {
   test('Detect if 4xx response != application/problem+json', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.paths['/example'].get.responses['404'].content = {
-      'application/json': openApi.paths['/example'].get.responses['404']['application/problem+json'],
+      'application/json': openApi.paths['/example'].get.responses['404'].content['application/problem+json'],
     };
     const result = await lint(openApi);
     expect(result).toEqual([
@@ -19,7 +19,7 @@ describe('MUST support problem JSON [176]', () => {
   test('Detect if 5xx response != application/problem+json', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.paths['/example'].patch.responses['500'].content = {
-      'application/json': openApi.paths['/example'].patch.responses['500']['application/problem+json'],
+      'application/json': openApi.paths['/example'].patch.responses['500'].content['application/problem+json'],
     };
     const result = await lint(openApi);
     expect(result).toEqual([

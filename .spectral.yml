@@ -320,7 +320,21 @@ rules:
       field: content.application/problem+json
       function: truthy
 
-  #MUST support problem JSON [176]
+  # SHOULD prefer standard media type name application/json [172]
+  # => https://opensource.zalando.com/restful-api-guidelines/#172
+
+  should-prefer-standard-media-type-names:
+    message: Custom media types should only be used for versioning
+    description: SHOULD prefer standard media type name application/json [172]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#172
+    severity: warn
+    given: $.paths.*.*.responses.*.content.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^application\/(problem\+)?json$|^[a-zA-Z0-9_]+\/[-+.a-zA-Z0-9_]+;(v|version)=[0-9]+$
+
+  # MUST support problem JSON [176]
   # => https://opensource.zalando.com/restful-api-guidelines/#176
 
   must-use-problem-json-for-errors:

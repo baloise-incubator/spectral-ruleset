@@ -115,7 +115,7 @@ npm run lint-fix # format source files
 | [#169][#169] | [MUST use standard date and time formats][#169] | - | A |
 | [#170][#170] | [SHOULD use standards for country, language and currency codes][#170] | - | B |
 | [#171][#171] | [MUST define format for number and integer types][#171] | - | - |
-| [#172][#172] | [SHOULD prefer standard media type name `application/json`][#172] | - | B |
+| [#172][#172] | [SHOULD prefer standard media type name `application/json`][#172] | :heavy_check_mark: | B |
 | [#173][#173] | [MUST use the common money object][#173] | - | - |
 | [#174][#174] | [MUST use common field names and semantics][#174] | - | - |
 | [#176][#176] | [MUST support problem JSON][#176] | :heavy_check_mark: | - |
