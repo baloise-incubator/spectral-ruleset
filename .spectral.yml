@@ -3,6 +3,7 @@ extends: [[spectral:oas, off]]
 documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#
 
 functions:
+  - assert-http-codes-for-operation
   - count-resource-types
   - is-object-schema
   - is-problem-json-schema
@@ -187,6 +188,114 @@ rules:
       function: pattern
       functionOptions:
         match: ^\/[^\/]*((\/{[^}]*})*\/[^\/]*(\/{[^}]*})*){0,3}\/?$
+
+  # MUST use standard HTTP status codes [150]
+  # => https://opensource.zalando.com/restful-api-guidelines/#150
+
+  must-use-standard-http-status-codes:
+    message: '{{property}} is not a standardized response code'
+    description: MUST use standard HTTP status codes [150]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#150
+    severity: error
+    given: $.paths.*.*.responses.*~
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - '100'
+          - '101'
+          - '200'
+          - '201'
+          - '202'
+          - '203'
+          - '204'
+          - '205'
+          - '206'
+          - '207'
+          - '300'
+          - '301'
+          - '302'
+          - '303'
+          - '304'
+          - '305'
+          - '307'
+          - '400'
+          - '401'
+          - '402'
+          - '403'
+          - '404'
+          - '405'
+          - '406'
+          - '407'
+          - '408'
+          - '409'
+          - '410'
+          - '411'
+          - '412'
+          - '413'
+          - '414'
+          - '415'
+          - '416'
+          - '417'
+          - '423'
+          - '426'
+          - '428'
+          - '429'
+          - '431'
+          - '500'
+          - '501'
+          - '502'
+          - '503'
+          - '504'
+          - '505'
+          - '511'
+          - default
+
+  should-use-well-understood-http-status-codes:
+    message: '{{error}}'
+    description: MUST use standard HTTP status codes [150]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#150
+    severity: warn
+    given: $.paths.*
+    then:
+      function: assert-http-codes-for-operation
+      functionOptions:
+        wellUnderstood:
+          # Success Codes
+          '200': [ALL]
+          '201': [POST, PUT]
+          '202': [POST, PUT, DELETE, PATCH]
+          '204': [PUT, DELETE, PATCH]
+          '207': [POST]
+
+          # Redirection Codes
+          '301': [ALL]
+          '303': [PATCH, POST, PUT, DELETE]
+          '304': [GET, HEAD]
+
+          # Client Side Error Codes
+          '400': [ALL]
+          '401': [ALL]
+          '403': [ALL]
+          '404': [ALL]
+          '405': [ALL]
+          '406': [ALL]
+          '408': [ALL]
+          '409': [POST, PUT, DELETE, PATCH]
+          '410': [ALL]
+          '412': [PUT, DELETE, PATCH]
+          '415': [POST, PUT, DELETE, PATCH]
+          '423': [PUT, DELETE, PATCH]
+          '428': [ALL]
+          '429': [ALL]
+
+          # Server Side Error Codes
+          '500': [ALL]
+          '501': [ALL]
+          '503': [ALL]
+
+          # OpenApi
+          'default': [ALL]
 
   # MUST specify success and error responses [151]
   # => https://opensource.zalando.com/restful-api-guidelines/#151

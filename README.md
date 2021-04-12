@@ -93,7 +93,7 @@ npm run lint-fix # format source files
 | [#147][#147] | [SHOULD limit number of sub-resource levels][#147] | :heavy_check_mark: | B |
 | [#148][#148] | [MUST use HTTP methods correctly][#148] | - | A |
 | [#149][#149] | [MUST fulfill common method properties][#149] | - | - |
-| [#150][#150] | [MUST use standard HTTP status codes][#150] | - | - |
+| [#150][#150] | [MUST use standard HTTP status codes][#150] | :heavy_check_mark: | - |
 | [#151][#151] | [MUST specify success and error responses][#151] | :heavy_check_mark: | B |
 | [#152][#152] | [MUST use code 207 for batch or bulk requests][#152] | - | C |
 | [#153][#153] | [MUST use code 429 with headers for rate limits][#153] | - | C |
