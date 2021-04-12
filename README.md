@@ -90,10 +90,10 @@ npm run lint-fix # format source files
 | [#144][#144] | [SHOULD only use UUIDs if necessary][#144] | - | - |
 | [#145][#145] | [MAY consider using (non-)nested URLs][#145] | - | - |
 | [#146][#146] | [SHOULD limit number of resource types][#146] | :heavy_check_mark: | B |
-| [#147][#147] | [SHOULD limit number of sub-resource levels][#147] | - | B |
+| [#147][#147] | [SHOULD limit number of sub-resource levels][#147] | :heavy_check_mark: | B |
 | [#148][#148] | [MUST use HTTP methods correctly][#148] | - | A |
 | [#149][#149] | [MUST fulfill common method properties][#149] | - | - |
-| [#150][#150] | [MUST use standard HTTP status codes][#150] | - | - |
+| [#150][#150] | [MUST use standard HTTP status codes][#150] | :heavy_check_mark: | - |
 | [#151][#151] | [MUST specify success and error responses][#151] | :heavy_check_mark: | B |
 | [#152][#152] | [MUST use code 207 for batch or bulk requests][#152] | - | C |
 | [#153][#153] | [MUST use code 429 with headers for rate limits][#153] | - | C |
@@ -115,7 +115,7 @@ npm run lint-fix # format source files
 | [#169][#169] | [MUST use standard date and time formats][#169] | - | A |
 | [#170][#170] | [SHOULD use standards for country, language and currency codes][#170] | - | B |
 | [#171][#171] | [MUST define format for number and integer types][#171] | - | - |
-| [#172][#172] | [SHOULD prefer standard media type name `application/json`][#172] | - | B |
+| [#172][#172] | [SHOULD prefer standard media type name `application/json`][#172] | :heavy_check_mark: | B |
 | [#173][#173] | [MUST use the common money object][#173] | - | - |
 | [#174][#174] | [MUST use common field names and semantics][#174] | - | - |
 | [#176][#176] | [MUST support problem JSON][#176] | :heavy_check_mark: | - |
