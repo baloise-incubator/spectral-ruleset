@@ -9,7 +9,8 @@ describe('MUST use semantic versioning [116]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'must-use-semantic-versioning',
-        message: '`version` property should match pattern `^[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?$`',
+        message:
+          '`version` property should match pattern `^[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?$`',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -33,7 +34,8 @@ describe('MUST use semantic versioning [116]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'must-use-semantic-versioning',
-        message: '`version` property should match pattern `^[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?$`',
+        message:
+          '`version` property should match pattern `^[0-9]+\\.[0-9]+\\.[0-9]+(-[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?$`',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
