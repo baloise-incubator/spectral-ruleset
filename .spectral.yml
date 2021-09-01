@@ -66,19 +66,19 @@ rules:
           type: string
           pattern: '^[0-9]+\.[0-9]+\.[0-9]+$'
 
-  # MUST property names must be ASCII snake_case [118]
+  # MUST property names must be ASCII camelCase [118a]
   # => https://opensource.zalando.com/restful-api-guidelines/#118
 
-  must-use-snake-case-for-property-names:
-    message: Property name has to be ASCII snake_case
-    description: MUST property names must be ASCII snake_case [118]
+  must-use-camel-case-for-property-names:
+    message: Property name has to be ASCII camelCase
+    description: MUST property names must be ASCII camelCase [118a]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#118
     severity: error
     given: $.paths.*.*[responses,requestBody]..content..schema..properties.*~
     then:
       function: pattern
       functionOptions:
-        match: ^[a-z_][a-z_0-9]*$
+        match: ^[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$
 
   # MUST use lowercase separate words with hyphens for path segments [129]
   # => https://opensource.zalando.com/restful-api-guidelines/#129

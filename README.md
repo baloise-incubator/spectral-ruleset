@@ -64,7 +64,8 @@ npm run lint-fix # format source files
 | [#114][#114] | [MUST use media type versioning][#114] | - | - |
 | [#115][#115] | [MUST not use URI versioning][#115] | :heavy_check_mark: | A |
 | [#116][#116] | [MUST use semantic versioning][#116] | :heavy_check_mark: | B |
-| [#118][#118] | [MUST property names must be ASCII snake_case (and never camelCase): `^[a-z_][a-z_0-9]*$`][#118] | :heavy_check_mark: | A |
+| [#118][#118] |~~[MUST property names must be ASCII snake_case (and never camelCase): `^[a-z_][a-z_0-9]*$`][#118]~~| :x: | A |
+| [#118a][#118a] | [MUST property names must be ASCII camelCase: `^[a-z]+((\d)([A-Z0-9][a-z0-9]+))*([A-Z])?$`][#118a] | :heavy_check_mark: | A |
 | [#120][#120] | [SHOULD pluralize array names][#120] | - | B |
 | [#122][#122] | [MUST not use `null` for boolean properties][#122] | - | - |
 | [#123][#123] | [MUST use same semantics for `null` and absent properties][#123] | - | - |
@@ -199,6 +200,7 @@ npm run lint-fix # format source files
 [#115]: https://opensource.zalando.com/restful-api-guidelines/#115
 [#116]: https://opensource.zalando.com/restful-api-guidelines/#116
 [#118]: https://opensource.zalando.com/restful-api-guidelines/#118
+[#118a]: ./doc/rules/property-names-must-be-ascii-camel-case.md
 [#120]: https://opensource.zalando.com/restful-api-guidelines/#120
 [#122]: https://opensource.zalando.com/restful-api-guidelines/#122
 [#123]: https://opensource.zalando.com/restful-api-guidelines/#123

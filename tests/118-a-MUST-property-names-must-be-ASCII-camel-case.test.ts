@@ -1,7 +1,7 @@
 import { DiagnosticSeverity } from '@stoplight/types';
 import { loadOpenApiSpec, lint } from './helpers';
 
-describe('MUST property names must be ASCII snake_case [118]', () => {
+describe('MUST property names must be ASCII camelCase [118a]', () => {
   test('Detect property names in response schema', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.paths['/example'].patch.responses['200'].content['application/json'].schema.properties = {
@@ -10,8 +10,8 @@ describe('MUST property names must be ASCII snake_case [118]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-use-snake-case-for-property-names',
-        message: 'Property name has to be ASCII snake_case',
+        code: 'must-use-camel-case-for-property-names',
+        message: 'Property name has to be ASCII camelCase',
         severity: DiagnosticSeverity.Error,
         path: [
           'paths',
@@ -38,8 +38,8 @@ describe('MUST property names must be ASCII snake_case [118]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-use-snake-case-for-property-names',
-        message: 'Property name has to be ASCII snake_case',
+        code: 'must-use-camel-case-for-property-names',
+        message: 'Property name has to be ASCII camelCase',
         severity: DiagnosticSeverity.Error,
         path: [
           'paths',
@@ -65,8 +65,8 @@ describe('MUST property names must be ASCII snake_case [118]', () => {
     const result = await lint(openApi);
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-use-snake-case-for-property-names',
-        message: 'Property name has to be ASCII snake_case',
+        code: 'must-use-camel-case-for-property-names',
+        message: 'Property name has to be ASCII camelCase',
         severity: DiagnosticSeverity.Error,
         path: [
           'paths',
