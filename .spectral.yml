@@ -64,7 +64,7 @@ rules:
       functionOptions:
         schema:
           type: string
-          pattern: '^[0-9]+\.[0-9]+\.[0-9]+$'
+          pattern: '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$'
 
   # MUST property names must be ASCII snake_case [118]
   # => https://opensource.zalando.com/restful-api-guidelines/#118
