@@ -36,19 +36,19 @@ rules:
     then:
       function: undefined
     
-  # MUST not use URI versioning [115]
-  # => https://opensource.zalando.com/restful-api-guidelines/#115
+  # CAN use URI versioning [115a]
+  # => https://opensource.zalando.com/restful-api-guidelines/#115a
 
-  must-not-use-uri-versioning:
-    message: Path must not contain versioning
-    description: MUST not use URI versioning [115]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#115
+  can-use-correct-uri-versioning:
+    message: Path can contain correct URI versioning
+    description: CAN use correct URI versioning [115a]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/can-use-correct-URI-versioning.test.md
     severity: error
     given: $.paths.*~
     then:
       function: pattern
       functionOptions:
-        notMatch: /v[0-9]+/
+        match: ^((?!.*\/v\d+(\/.*)?\/v\d+)\/.*)$
 
   # MUST use semantic versioning [116]
   # => https://opensource.zalando.com/restful-api-guidelines/#116
@@ -72,7 +72,7 @@ rules:
   must-use-camel-case-for-property-names:
     message: Property name has to be ASCII camelCase
     description: MUST property names must be ASCII camelCase [118a]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#118
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/property-names-must-be-ascii-camel-case.md
     severity: error
     given: $.paths.*.*[responses,requestBody]..content..schema..properties.*~
     then:
