@@ -15,6 +15,9 @@ npx @stoplight/spectral lint example/example-openapi.yml
 # or reference the ruleset via url
 npx @stoplight/spectral lint example/example-openapi.yml --ruleset https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/.spectral.yml
 
+# or install baloise rules via npm
+npm i @baloise/spectral-ruleset
+
 # if you're behind a proxy
 PROXY=<PROXY URL> npx @stoplight/spectral lint <...>
 ```
