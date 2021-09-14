@@ -1,6 +1,6 @@
 {
   "name": "@baloise/spectral-ruleset",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Custom Spectral API Linter ruleset for Baloise API Guidelines based on Zalando API guidelines.",
   "main": ".spectral.yml",
   "scripts": {
