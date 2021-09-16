@@ -1,7 +1,7 @@
 extends: [./zalando.yml] # We're extending the zalando ruleset by replacing or adding baloise specific rules.
 rules:
   # CAN use URI versioning [115a]
-  # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#115a
+  # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#115
 
   must-not-use-uri-versioning: off
   can-use-correct-uri-versioning:
