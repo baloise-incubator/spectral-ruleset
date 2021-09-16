@@ -7,7 +7,7 @@ describe('MUST property names must be ASCII camelCase [118a]', () => {
     openApi.paths['/example'].patch.responses['200'].content['application/json'].schema.properties = {
       foo: { properties: { Bar: {} } },
     };
-    const result = await lint(openApi);
+    const result = await lint(openApi, 'baloise');
     expect(result).toEqual([
       expect.objectContaining({
         code: 'must-use-camel-case-for-property-names',
@@ -35,7 +35,7 @@ describe('MUST property names must be ASCII camelCase [118a]', () => {
     openApi.paths['/example'].patch.requestBody.content['application/json'].schema.properties = {
       foo: { properties: { Bar: {} } },
     };
-    const result = await lint(openApi);
+    const result = await lint(openApi, 'baloise');
     expect(result).toEqual([
       expect.objectContaining({
         code: 'must-use-camel-case-for-property-names',
@@ -62,7 +62,7 @@ describe('MUST property names must be ASCII camelCase [118a]', () => {
     openApi.components.schemas.Example.properties = {
       foo: { type: 'array', items: { properties: { Bar: {} } } },
     };
-    const result = await lint(openApi);
+    const result = await lint(openApi, 'baloise');
     expect(result).toEqual([
       expect.objectContaining({
         code: 'must-use-camel-case-for-property-names',
