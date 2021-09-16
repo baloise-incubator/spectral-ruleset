@@ -21,7 +21,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         with:
-          commit-message: 'CI: new version {{version}}'
+          commit-message: 'CI: new version {{version}} [skip ci]'
 
       - name: Install
         run: npm install
