@@ -9,9 +9,9 @@
     "test": "jest"
   },
   "author": {
-    "name": "Christian Siegel",
-    "email": "christian.siegel@baloise.ch",
-    "url": "https://github.com/christiansiegel"
+    "name": "Baloise Group",
+    "email": "Group.CH_Open-Source@baloise.ch",
+    "url": "https://github.com/baloise/"
   },
   "license": "Apache-2.0",
   "devDependencies": {
