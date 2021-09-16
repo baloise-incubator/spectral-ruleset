@@ -18,7 +18,7 @@ fs = require('fs');
       markdown += '| id | title |supported |\n';
       markdown += '| --- | --- | --- |\n';
       rules.forEach((rule) => {
-        const tested = testedIds.indexOf(rule.id) != -1;
+        const tested = testedIds.indexOf(rule.id) !== -1;
         markdown += `| [${rule.id}][${rule.id}] | [${rule.title}][${rule.id}] | ${
           tested ? ':heavy_check_mark:' : '-'
         } |\n`;

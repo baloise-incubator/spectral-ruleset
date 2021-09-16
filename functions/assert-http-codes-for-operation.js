@@ -23,7 +23,6 @@ module.exports = (targetValue, { wellUnderstood }, paths) => {
           message: `${code} is not a well-understood HTTP status code for ${upperCaseVerb}`,
           path: [...paths.target, verb, 'responses', code],
         });
-        continue;
       }
     }
   }
