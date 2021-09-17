@@ -1,0 +1,31 @@
+extends: [./zalando.yml] # We're extending the zalando ruleset by replacing or adding baloise specific rules.
+rules:
+  # CAN use URI versioning [115a]
+  # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#115
+
+  must-not-use-uri-versioning: off
+  can-use-correct-uri-versioning:
+    message: Path can contain correct URI versioning
+    description: CAN use correct URI versioning [115a]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/can-use-correct-URI-versioning.test.md
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^((?!.*\/v\d+(\/.*)?\/v\d+)\/.*)$
+
+  # MUST property names must be ASCII camelCase [118a]
+  # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#118
+
+  must-use-snake-case-for-property-names: off
+  must-use-camel-case-for-property-names:
+    message: Property name has to be ASCII camelCase
+    description: MUST property names must be ASCII camelCase [118a]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/property-names-must-be-ascii-camel-case.md
+    severity: error
+    given: $.paths.*.*[responses,requestBody]..content..schema..properties.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$
