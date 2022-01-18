@@ -4,7 +4,7 @@ const extractResourceTypeFromPath = (path) => {
   return path.split('/')[path.startsWith('/') ? 1 : 0];
 };
 
-module.exports = (targetValue, { max }) => {
+export default (targetValue, { max }) => {
   const paths = Object.keys(targetValue);
   if (paths.length <= max) return [];
 
