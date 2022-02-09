@@ -33,6 +33,8 @@ paths:
           schema:
             type: integer
         - $ref: '#/components/parameters/HeaderParamComponent'
+        - $ref: '#/components/parameters/HeaderB3TraceId'
+        - $ref: '#/components/parameters/HeaderB3SpanId'
       responses:
         '200':
           description: ok
@@ -104,6 +106,18 @@ components:
       name: Header-Param-From-Component
       schema:
         type: integer
+    HeaderB3TraceId:
+      in: header
+      name: X-B3-Traceid
+      required: true
+      schema:
+        type: string
+    HeaderB3SpanId:
+      in: header
+      name: X-B3-Spanid
+      required: true
+      schema:
+        type: string
   schemas:
     Example:
       type: object

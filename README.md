@@ -218,7 +218,7 @@ npm run lint-fix # format source files
 | [#229][#229]   | [SHOULD consider to design `POST` and `PATCH` idempotent][#229]                                      | - | - | - |
 | [#230][#230]   | [MAY consider to support `Idempotency-Key` header][#230]                                             | - | - | - |
 | [#231][#231]   | [Should use secondary key for idempotent `POST` design][#231]                                        | - | - | - |
-| [#233][#233]   | [MUST support `X-Flow-ID`][#233]                                                                     | - | - | - |
+| [#233a][#233a] | [MUST request must use b3 tracing headers][#233a]                                                    | - | :heavy_check_mark: | - |
 | [#234][#234]   | [MUST only use durable and immutable remote references][#234]                                        | - | - | - |
 | [#235][#235]   | [SHOULD name date/time properties with `_at` suffix][#235]                                           | - | - | - |
 | [#236][#236]   | [SHOULD design simple query languages using query parameters][#236]                                  | - | - | - |
@@ -356,6 +356,7 @@ npm run lint-fix # format source files
 [#230]: https://opensource.zalando.com/restful-api-guidelines/#230
 [#231]: https://opensource.zalando.com/restful-api-guidelines/#231
 [#233]: https://opensource.zalando.com/restful-api-guidelines/#233
+[#233a]: ./doc/rules/requests-must-use-b3-tracing.md
 [#234]: https://opensource.zalando.com/restful-api-guidelines/#234
 [#235]: https://opensource.zalando.com/restful-api-guidelines/#235
 [#236]: https://opensource.zalando.com/restful-api-guidelines/#236
