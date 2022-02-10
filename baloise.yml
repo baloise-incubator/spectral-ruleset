@@ -103,7 +103,7 @@ rules:
 
   must-use-b3-tracing:
     message: B3 header X-B3-Traceid or X-B3-Spanid missing
-    description: MUST use b3 tracing [223a]
+    description: MUST use b3 tracing [233a]
     documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/requests-must-use-b3-tracing.md
     severity: warn
     given: $.paths.*.*.parameters
