@@ -13,7 +13,7 @@ describe('MUST use b3 tracing [233a]', () => {
       expect.objectContaining({
         code: 'must-use-b3-tracing',
         message: 'B3 header X-B3-Traceid or X-B3-Spanid missing',
-        severity: DiagnosticSeverity.Error,
+        severity: DiagnosticSeverity.Warning,
       }),
     ]);
   });
@@ -29,7 +29,7 @@ describe('MUST use b3 tracing [233a]', () => {
       expect.objectContaining({
         code: 'must-use-b3-tracing',
         message: 'B3 header X-B3-Traceid or X-B3-Spanid missing',
-        severity: DiagnosticSeverity.Error,
+        severity: DiagnosticSeverity.Warning,
       }),
     ]);
   });
