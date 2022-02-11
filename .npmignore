@@ -1,3 +1,5 @@
 *
 !functions/*.js
 !.spectral.yml
+!baloise.yml
+!zalando.yml
