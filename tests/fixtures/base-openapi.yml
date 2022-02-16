@@ -115,7 +115,7 @@ components:
     HeaderB3Spanid:
       in: header
       name: X-B3-Spanid
-      required: true
+      required: false
       schema:
         type: string
   schemas:
