@@ -27,11 +27,13 @@ paths:
           name: query_param_1
           schema:
             type: integer
+            format: int32
         - $ref: '#/components/parameters/QueryParamComponent'
         - in: header
           name: My-Header
           schema:
             type: integer
+            format: int32
         - $ref: '#/components/parameters/HeaderParamComponent'
         - $ref: '#/components/parameters/HeaderB3Traceid'
         - $ref: '#/components/parameters/HeaderB3Spanid'
@@ -127,12 +129,35 @@ components:
         foo:
           properties:
             bar:
-              type: integer
+              type: number
+              format: decimal
         xenum:
           type: string
           x-extensible-enum:
             - FOO
             - BAR
+        integers:
+          properties:
+            int32:
+              type: integer
+              format: int32
+            int64:
+              type: integer
+              format: int64
+            bigint:
+              type: integer
+              format: bigint
+        numbers:
+          properties:
+            float:
+              type: number
+              format: float
+            double:
+              type: number
+              format: double
+            decimal:
+              type: number
+              format: decimal
     Problem: # from https://opensource.zalando.com/problem/schema.yaml#/Problem
       type: object
       properties:
