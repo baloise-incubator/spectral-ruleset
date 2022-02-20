@@ -426,15 +426,22 @@ rules:
       field: x-api-id
       function: truthy
 
-  must-have-info-x-audience:
-    message: Missing `info.x-audience`.
-    description: MUST contain API meta information [218]
-    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#218
+  # MUST provide API audience [219]
+  # => https://opensource.zalando.com/restful-api-guidelines/#219
+
+  must-provide-api-audience:
+    message: Missing or wrong `info.x-audience`.
+    description: MUST provide API audience [219]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#219
     severity: error
     given: $.info
     then:
-      field: x-audience
-      function: truthy
+      - field: x-audience
+        function: truthy
+      - field: x-audience
+        function: pattern
+        functionOptions:
+          match: ^(component-internal|business-unit-internal|company-internal|external-partner|external-public)$
 
   # SHOULD declare enum values using UPPER_SNAKE_CASE format [240]
   # => https://opensource.zalando.com/restful-api-guidelines/#240

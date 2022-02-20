@@ -209,7 +209,7 @@ npm run lint-fix # format source files
 | [#216][#216]   | [SHOULD define maps using `additionalProperties`][#216]                                              | - | - | - |
 | [#217][#217]   | [MUST use full, absolute URI][#217]                                                                  | - | - | - |
 | [#218][#218]   | [MUST contain API meta information][#218]                                                            | :heavy_check_mark: | :heavy_check_mark: | - | - |
-| [#219][#219]   | [MUST provide API audience][#219]                                                                    | - | - | - |
+| [#219][#219]   | [MUST provide API audience][#219]                                                                    | :heavy_check_mark: | :heavy_check_mark: | - | - |
 | [#220][#220]   | [MUST use most specific HTTP status codes][#220]                                                     | :grey_exclamation: | :grey_exclamation: | - |
 | [#223][#223]   | [MUST-SHOULD use functional naming schema][#223]                                                     | :grey_exclamation: | :grey_exclamation: | - |
 | [#224][#224]   | [MUST follow naming convention for hostnames][#224]                                                  | :grey_exclamation: | :grey_exclamation: | - |
