@@ -1,5 +1,5 @@
-# MUST request must use b3 tracing headers
-The following header parameter are mandatory for any request:
+# MUST request must provide b3 tracing headers
+The following header parameter must be provided for any request:
 
 - `X-B3-Traceid`
 - `X-B3-Spanid`

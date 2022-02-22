@@ -218,7 +218,7 @@ npm run lint-fix # format source files
 | [#229][#229]   | [SHOULD consider to design `POST` and `PATCH` idempotent][#229]                                      | - | - | - |
 | [#230][#230]   | [MAY consider to support `Idempotency-Key` header][#230]                                             | - | - | - |
 | [#231][#231]   | [Should use secondary key for idempotent `POST` design][#231]                                        | - | - | - |
-| [#233a][#233a] | [MUST request must use b3 tracing headers][#233a]                                                    | - | :heavy_check_mark: | - |
+| [#233a][#233a] | [MUST request must provide b3 tracing headers][#233a]                                                | - | :heavy_check_mark: | - |
 | [#234][#234]   | [MUST only use durable and immutable remote references][#234]                                        | - | - | - |
 | [#235][#235]   | [SHOULD name date/time properties with `_at` suffix][#235]                                           | - | - | - |
 | [#236][#236]   | [SHOULD design simple query languages using query parameters][#236]                                  | - | - | - |
