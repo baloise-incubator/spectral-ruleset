@@ -1,7 +1,7 @@
 import { DiagnosticSeverity } from '@stoplight/types';
 import { loadOpenApiSpec, lint } from './helpers';
 
-describe('MUST use b3 tracing [233a]', () => {
+describe('MUST request must provide b3 tracing [233a]', () => {
   test('Assert missing X-B3-Traceid', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.paths['/example'].get.parameters = openApi.paths['/example'].get.parameters.filter(
@@ -13,7 +13,7 @@ describe('MUST use b3 tracing [233a]', () => {
       expect.objectContaining({
         code: 'must-use-b3-tracing',
         message: 'B3 header X-B3-Traceid or X-B3-Spanid missing',
-        severity: DiagnosticSeverity.Warning,
+        severity: DiagnosticSeverity.Error,
       }),
     ]);
   });
@@ -29,7 +29,7 @@ describe('MUST use b3 tracing [233a]', () => {
       expect.objectContaining({
         code: 'must-use-b3-tracing',
         message: 'B3 header X-B3-Traceid or X-B3-Spanid missing',
-        severity: DiagnosticSeverity.Warning,
+        severity: DiagnosticSeverity.Error,
       }),
     ]);
   });
