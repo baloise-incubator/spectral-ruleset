@@ -24,7 +24,7 @@ paths:
       tags: [foo]
       parameters:
         - in: query
-          name: query_param_1
+          name: test
           schema:
             type: integer
             format: int32
@@ -100,7 +100,7 @@ components:
   parameters:
     QueryParamComponent:
       in: query
-      name: query_param_from_component
+      name: param
       schema:
         type: integer
     HeaderParamComponent:
