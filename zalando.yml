@@ -7,6 +7,7 @@ functions:
   - count-resource-types
   - is-object-schema
   - is-problem-json-schema
+  - debug
 
 rules:
   # https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md#oas3-schema
@@ -319,6 +320,38 @@ rules:
     then:
       field: content.application/problem+json
       function: truthy
+
+  # MUST define a format for number and integer types [171]
+  # => https://opensource.zalando.com/restful-api-guidelines/#171
+  # => list of valid types https://github.com/zalando/zally/blob/main/server/zally-ruleset-zalando/src/main/resources/reference.conf#L92-L97
+
+  must-define-a-format-for-number-types:
+    message: Numeric properties must have valid format specified
+    description: MUST define a format for number and integer types [171]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#171
+    severity: error
+    given: $.paths.*.*..schema..properties..[?(@.type=='number')]
+    then:
+      - field: format
+        function: defined
+      - field: format
+        function: pattern
+        functionOptions:
+          match: ^(float|double|decimal)$
+
+  must-define-a-format-for-integer-types:
+    message: Numeric properties must have valid format specified
+    description: MUST define a format for number and integer types [171]
+    documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#171
+    severity: error
+    given: $.paths.*.*..schema..properties..[?(@.type=='integer')]
+    then:
+      - field: format
+        function: defined
+      - field: format
+        function: pattern
+        functionOptions:
+          match: ^(int32|int64|bigint)$
 
   # SHOULD prefer standard media type name application/json [172]
   # => https://opensource.zalando.com/restful-api-guidelines/#172
