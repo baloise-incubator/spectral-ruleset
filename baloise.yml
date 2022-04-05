@@ -129,3 +129,20 @@ rules:
         function: pattern
         functionOptions:
           match: ^(team-internal|domain-internal|company-internal|external-partner|external-public)$
+
+
+  # MUST use camel case for query parameters [130a]
+  # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#130
+
+  must-use-snake-case-for-query-parameters: off
+
+  must-use-camel-case-for-query-parameters:
+    message: Query parameter name has to be ASCII camelCase
+    description: MUST query parameter names must be ASCII camelCase [130a]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/query-parameter-names-must-be-ascii-camel-case.md
+    severity: error
+    given: $.paths.*.*.parameters[?(@.in=='query')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$
