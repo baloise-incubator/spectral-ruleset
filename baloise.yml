@@ -109,3 +109,23 @@ rules:
     given: $.paths.*.*.parameters
     then:
       function: validate-b3-tracing
+
+
+    # MUST provide API audience [219]
+    # => https://opensource.zalando.com/restful-api-guidelines/#219
+
+  must-provide-api-audience: off
+
+  must-provide-baloise-api-audience:
+    message: Missing or wrong `info.x-audience`.
+    description: MUST provide API audience [219]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/property-names-must-be-ascii-camel-case.md
+    severity: error
+    given: $.info
+    then:
+      - field: x-audience
+        function: truthy
+      - field: x-audience
+        function: pattern
+        functionOptions:
+          match: ^(team-internal|domain-internal|company-internal|external-partner|external-public)$

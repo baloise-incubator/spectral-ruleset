@@ -131,16 +131,4 @@ describe('MUST contain API meta information [218]', () => {
       }),
     ]);
   });
-
-  test('Detect missing `info.x-audience`', async () => {
-    delete openApi.info['x-audience'];
-    const result = await lint(openApi);
-    expect(result).toEqual([
-      expect.objectContaining({
-        code: 'must-have-info-x-audience',
-        message: 'Missing `info.x-audience`.',
-        severity: DiagnosticSeverity.Error,
-      }),
-    ]);
-  });
 });
