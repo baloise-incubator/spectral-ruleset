@@ -18,7 +18,7 @@ const check = (schema) => {
   }
 };
 
-module.exports = (targetValue) => {
+export default (targetValue) => {
   try {
     check(targetValue);
   } catch (ex) {

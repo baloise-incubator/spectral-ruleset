@@ -9,7 +9,7 @@ describe('MUST provide API identifiers [215]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'must-provide-api-identifiers',
-        message: '`x-api-id` property should match pattern `^[a-z0-9][a-z0-9-:.]{6,62}[a-z0-9]$`',
+        message: '"x-api-id" property must match pattern "^[a-z0-9][a-z0-9-:.]{6,62}[a-z0-9]$"',
         severity: DiagnosticSeverity.Error,
       }),
     ]);

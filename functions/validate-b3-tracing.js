@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (targetValue) => {
+export default (targetValue) => {
   if (!Array.isArray(targetValue)) {
     return [
       {
