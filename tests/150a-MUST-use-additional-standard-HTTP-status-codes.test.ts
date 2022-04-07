@@ -86,6 +86,7 @@ const WELL_UNDERSTOOD = {
   '410': ['ALL'],
   '412': ['PUT', 'DELETE', 'PATCH'],
   '415': ['POST', 'PUT', 'DELETE', 'PATCH'],
+  '422': ['ALL'],
   '423': ['PUT', 'DELETE', 'PATCH'],
   '428': ['ALL'],
   '429': ['ALL'],
@@ -153,12 +154,12 @@ describe('MUST use additional standard HTTP status codes [150a]', () => {
       }),
       {},
     );
-    const result = await lint(openApi);
+    const result = await lint(openApi, 'baloise');
     STANDARD_BUT_NOT_WELL_UNDERSTOOD_CODES.forEach((code) => {
       expect(result).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'should-use-well-understood-http-status-codes',
+            code: 'should-use-additional-well-understood-http-status-codes',
             message: `${code} is not a well-understood HTTP status code`,
             severity: DiagnosticSeverity.Warning,
           }),
@@ -169,7 +170,7 @@ describe('MUST use additional standard HTTP status codes [150a]', () => {
       expect(result).not.toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'should-use-well-understood-http-status-codes',
+            code: 'should-use-additional-well-understood-http-status-codes',
             message: `${code} is not a well-understood HTTP status code`,
             severity: DiagnosticSeverity.Warning,
           }),
@@ -196,16 +197,16 @@ describe('MUST use additional standard HTTP status codes [150a]', () => {
         },
       },
     };
-    const result = await lint(openApi);
+    const result = await lint(openApi, 'baloise');
     expect(result).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          code: 'should-use-well-understood-http-status-codes',
+          code: 'should-use-additional-well-understood-http-status-codes',
           message: `201 is not a well-understood HTTP status code for GET`,
           severity: DiagnosticSeverity.Warning,
         }),
         expect.objectContaining({
-          code: 'should-use-well-understood-http-status-codes',
+          code: 'should-use-additional-well-understood-http-status-codes',
           message: `204 is not a well-understood HTTP status code for POST`,
           severity: DiagnosticSeverity.Warning,
         }),
