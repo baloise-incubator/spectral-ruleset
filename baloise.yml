@@ -2,6 +2,7 @@ extends: [./zalando.yml] # We're extending the zalando ruleset by replacing or a
 
 functions:
   - validate-b3-tracing
+  - assert-http-codes-for-operation
 
 rules:
   # CAN use URI versioning [115a]
@@ -98,6 +99,56 @@ rules:
           - '511'
           - default
 
+  should-use-well-understood-http-status-codes: off
+
+  should-use-additional-well-understood-http-status-codes:
+    message: '{{error}}'
+    description: MUST use standard HTTP status codes [150]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/should-use-additional-well-understood-http-status-codes.md
+    severity: warn
+    given: $.paths.*
+    then:
+      function: assert-http-codes-for-operation
+      functionOptions:
+        wellUnderstood:
+          # Success Codes
+          '200': [ ALL ]
+          '201': [ POST, PUT ]
+          '202': [ POST, PUT, DELETE, PATCH ]
+          '204': [ PUT, DELETE, PATCH ]
+          '207': [ POST ]
+
+          # Redirection Codes
+          '301': [ ALL ]
+          '303': [ PATCH, POST, PUT, DELETE ]
+          '304': [ GET, HEAD ]
+
+          # Client Side Error Codes
+          '400': [ ALL ]
+          '401': [ ALL ]
+          '403': [ ALL ]
+          '404': [ ALL ]
+          '405': [ ALL ]
+          '406': [ ALL ]
+          '408': [ ALL ]
+          '409': [ POST, PUT, DELETE, PATCH ]
+          '410': [ ALL ]
+          '412': [ PUT, DELETE, PATCH ]
+          '415': [ POST, PUT, DELETE, PATCH ]
+          '422': [ ALL ]
+          '423': [ PUT, DELETE, PATCH ]
+          '428': [ ALL ]
+          '429': [ ALL ]
+
+          # Server Side Error Codes
+          '500': [ ALL ]
+          '501': [ ALL ]
+          '503': [ ALL ]
+
+          # OpenApi
+          'default': [ ALL ]
+
+
   # MUST request must provide b3 tracing [233a]
   # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#233
 
@@ -146,3 +197,5 @@ rules:
       function: pattern
       functionOptions:
         match: ^[a-z]+((\d)|([A-Z0-9][a-z0-9]+))*([A-Z])?$
+
+
