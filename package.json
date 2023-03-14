@@ -15,8 +15,8 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@stoplight/spectral-cli": "^6.3.0",
-    "@stoplight/spectral-ruleset-bundler": "^1.2.1",
+    "@stoplight/spectral-cli": "^6.6.0",
+    "@stoplight/spectral-ruleset-bundler": "^1.5.1",
     "@types/jest": "27.4.0",
     "@types/js-yaml": "4.0.5",
     "@typescript-eslint/eslint-plugin": "5.10.1",
