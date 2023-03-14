@@ -92,7 +92,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: ^(([\/a-z][a-z0-9\-\/]*)?({[^}]*})?)+$
+        match: ^(?=((([\/a-z][a-z0-9\-\/]*)?({[^}]*})?)+))\1$
 
   # MUST use snake_case (never camelCase) for query parameters [130]
   # => https://opensource.zalando.com/restful-api-guidelines/#130
