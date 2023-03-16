@@ -32,7 +32,7 @@ rules:
     description: SHOULD used open-ended list of values (x-extensible-enum) for enumerations [112]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#112
     severity: warn
-    given: $.paths..[?(@.type=='string')].enum
+    given: $.paths..[?(@ && @.type=='string')].enum
     then:
       function: undefined
 
@@ -102,7 +102,7 @@ rules:
     description: MUST use snake_case (never camelCase) for query parameters [130]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#130
     severity: error
-    given: $.paths.*.*.parameters[?(@.in=='query')].name
+    given: $.paths.*.*.parameters[?(@ && @.in=='query')].name
     then:
       function: pattern
       functionOptions:
@@ -116,7 +116,7 @@ rules:
     description: SHOULD prefer hyphenated-pascal-case for HTTP header fields [132]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#132
     severity: warn
-    given: $.paths.*.*.parameters[?(@.in=='header')].name
+    given: $.paths.*.*.parameters[?(@ && @.in=='header')].name
     then:
       function: pattern
       functionOptions:
@@ -329,7 +329,7 @@ rules:
     description: MUST define a format for number and integer types [171]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#171
     severity: error
-    given: $.paths.*.*..schema..properties..[?(@.type=='number')]
+    given: $.paths.*.*..schema..properties..[?(@ && @.type=='number')]
     then:
       - field: format
         function: defined
@@ -343,7 +343,7 @@ rules:
     description: MUST define a format for number and integer types [171]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#171
     severity: error
-    given: $.paths.*.*..schema..properties..[?(@.type=='integer')]
+    given: $.paths.*.*..schema..properties..[?(@ && @.type=='integer')]
     then:
       - field: format
         function: defined
@@ -374,7 +374,7 @@ rules:
     description: MUST support problem JSON [176]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#176
     severity: error
-    given: $.paths.*.*.responses[?(@property.match(/^(4|5)/))]
+    given: $.paths.*.*.responses[?(@ && @property.match(/^(4|5)/))]
     then:
       field: content.application/problem+json
       function: truthy
@@ -483,7 +483,7 @@ rules:
     description: SHOULD declare enum values using UPPER_SNAKE_CASE format [240]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#240
     severity: warn
-    given: $.paths..[?(@.type=='string')].[enum,x-extensible-enum].*
+    given: $.paths..[?(@ && @.type=='string')].[enum,x-extensible-enum].*
     then:
       function: pattern
       functionOptions:

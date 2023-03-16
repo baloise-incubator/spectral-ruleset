@@ -8,7 +8,7 @@ Custom [Spectral API Linter](https://github.com/stoplightio/spectral) ruleset fo
 
 There are two flavors of the ruleset:
 - `zalando`: Sticks to the [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
-- `baloise`: Adapts some of the rules to the needs of [baloise](https://github.com/baloise)
+- `baloise`: Adapts some rules to the needs of [baloise](https://github.com/baloise)
 
 Please refer to the table below for details.
 
@@ -18,12 +18,12 @@ Please refer to the table below for details.
 
 ```bash
 # zalando flavor:
-npx @stoplight/spectral lint \
+npx @stoplight/spectral-cli lint \
     --ruleset https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/zalando.yml \
     example/example-openapi.yml
 
 # baloise flavor:
-npx @stoplight/spectral lint \
+npx @stoplight/spectral-cli lint \
     --ruleset https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/baloise.yml \
     example/example-openapi.yml
 ```
@@ -32,7 +32,7 @@ Or just create a `.spectral.yml` extending it
 ```bash
 echo "extends: [https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/baloise.yml]" \
     > .spectral.yml
-npx @stoplight/spectral lint example/example-openapi.yml
+npx @stoplight/spectral-cli lint example/example-openapi.yml
 ```
 
 If you're behind a proxy you can pass it via `PROXY` environment variable:
@@ -45,12 +45,12 @@ PROXY=<PROXY URL> npx @stoplight/spectral lint <...>
 npm i @baloise/spectral-rules
 
 # zalando flavor:
-npx @stoplight/spectral lint \
+npx @stoplight/spectral-cli lint \
     --ruleset ./node_modules/@baloise/spectral-rules/zalando.yml \
     example/example-openapi.yml
 
 # baloise flavor:
-npx @stoplight/spectral lint \
+npx @stoplight/spectral-cli lint \
     --ruleset ./node_modules/@baloise/spectral-rules/baloise.yml \
     example/example-openapi.yml
 ```
@@ -58,7 +58,7 @@ npx @stoplight/spectral lint \
 Or just create a `.spectral.yml` extending it
 ```bash
 echo "extends: [./node_modules/@baloise/spectral-rules/baloise.yml]" > .spectral.yml
-npx @stoplight/spectral lint example/example-openapi.yml
+npx @stoplight/spectral-cli lint example/example-openapi.yml
 ```
 
 ## Development

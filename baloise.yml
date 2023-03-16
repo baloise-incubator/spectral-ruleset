@@ -192,7 +192,7 @@ rules:
     description: MUST query parameter names must be ASCII camelCase [130a]
     documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/query-parameter-names-must-be-ascii-camel-case.md
     severity: error
-    given: $.paths.*.*.parameters[?(@.in=='query')].name
+    given: $.paths.*.*.parameters[?(@ && @.in=='query')].name
     then:
       function: pattern
       functionOptions:
