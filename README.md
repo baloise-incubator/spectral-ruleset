@@ -10,7 +10,13 @@ There are two flavors of the ruleset:
 - `zalando`: Sticks to the [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 - `baloise`: Adapts some rules to the needs of [baloise](https://github.com/baloise)
 
-Please refer to the table below for details.
+Please refer to the table below for details.  
+
+The ruleset `spectral:oas` is disabled by default. If you like to enable these rules again use  
+```bash
+echo "extends: [https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/zalando.yml, spectral:oas]" \
+    > .spectral.yml
+```
 
 ## Use it
 
