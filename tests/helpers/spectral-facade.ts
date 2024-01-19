@@ -1,16 +1,16 @@
 import { OpenApiSpec } from './types';
 import { IRuleResult, Spectral } from '@stoplight/spectral-core';
 import { createHttpAndFileResolver } from '@stoplight/spectral-ref-resolver';
-import ProxyAgent from 'proxy-agent';
+import { ProxyAgent } from 'proxy-agent';
 import * as path from '@stoplight/path';
 import * as fs from 'fs';
-import { bundleAndLoadRuleset } from '@stoplight/spectral-ruleset-bundler/dist/loader/node';
+import { bundleAndLoadRuleset } from '@stoplight/spectral-ruleset-bundler/with-loader';
 import { fetch } from '@stoplight/spectral-runtime';
 
 export async function lint(openApi: OpenApiSpec, flavor: 'zalando' | 'baloise' = 'zalando'): Promise<IRuleResult[]> {
   const resolver = process.env.http_proxy
     ? {
-        resolver: createHttpAndFileResolver({ agent: new ProxyAgent(process.env.http_proxy) }),
+        resolver: createHttpAndFileResolver({ agent: new ProxyAgent() }),
       }
     : {};
   const spectral = new Spectral(resolver);
