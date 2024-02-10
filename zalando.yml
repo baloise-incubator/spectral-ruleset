@@ -7,6 +7,7 @@ functions:
   - count-resource-types
   - is-object-schema
   - is-problem-json-schema
+  - rule-132
 
 rules:
   # https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md#oas3-schema
@@ -116,11 +117,9 @@ rules:
     description: SHOULD prefer hyphenated-pascal-case for HTTP header fields [132]
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#132
     severity: warn
-    given: $.paths.*.*.parameters[?(@ && @.in=='header')].name
+    given: $.paths..parameters[?(@ && @.in=='header')].name
     then:
-      function: pattern
-      functionOptions:
-        match: ^([A-Z][a-z]*)(-[A-Z0-9][a-z0-9]*)*$
+      function: rule-132
 
   # SHOULD not use /api as base path [135]
   # => https://opensource.zalando.com/restful-api-guidelines/#135

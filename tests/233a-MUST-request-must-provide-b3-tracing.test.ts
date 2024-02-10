@@ -5,7 +5,7 @@ describe('MUST request must provide b3 tracing [233a]', () => {
   test('Assert missing X-B3-Traceid', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.paths['/example'].get.parameters = openApi.paths['/example'].get.parameters.filter(
-      (param: { $ref: string }) => !param['$ref'] || param['$ref'] !== '#/components/parameters/HeaderB3Traceid',
+      (param: { $ref: string }) => !param['$ref'] || param['$ref'] !== '#/components/parameters/HeaderB3TraceId',
     );
 
     const result = await lint(openApi, 'baloise');
@@ -21,7 +21,7 @@ describe('MUST request must provide b3 tracing [233a]', () => {
   test('Assert missing X-B3-Spanid', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.paths['/example'].get.parameters = openApi.paths['/example'].get.parameters.filter(
-      (param: { $ref: string }) => !param['$ref'] || param['$ref'] !== '#/components/parameters/HeaderB3Spanid',
+      (param: { $ref: string }) => !param['$ref'] || param['$ref'] !== '#/components/parameters/HeaderB3SpanId',
     );
 
     const result = await lint(openApi, 'baloise');
