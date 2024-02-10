@@ -35,8 +35,8 @@ paths:
             type: integer
             format: int32
         - $ref: '#/components/parameters/HeaderParamComponent'
-        - $ref: '#/components/parameters/HeaderB3Traceid'
-        - $ref: '#/components/parameters/HeaderB3Spanid'
+        - $ref: '#/components/parameters/HeaderB3TraceId'
+        - $ref: '#/components/parameters/HeaderB3SpanId'
       responses:
         '200':
           description: ok
@@ -108,15 +108,15 @@ components:
       name: Header-Param-From-Component
       schema:
         type: integer
-    HeaderB3Traceid:
+    HeaderB3TraceId:
       in: header
-      name: X-B3-Traceid
+      name: X-B3-TraceId
       required: true
       schema:
         type: string
-    HeaderB3Spanid:
+    HeaderB3SpanId:
       in: header
-      name: X-B3-Spanid
+      name: X-B3-SpanId
       required: false
       schema:
         type: string
