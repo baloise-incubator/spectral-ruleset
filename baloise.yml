@@ -157,7 +157,7 @@ rules:
     description: MUST use b3 tracing [233a]
     documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/requests-must-use-b3-tracing.md
     severity: error
-    given: $.paths.*.*.parameters
+    given: $.paths.*
     then:
       function: validate-b3-tracing
 

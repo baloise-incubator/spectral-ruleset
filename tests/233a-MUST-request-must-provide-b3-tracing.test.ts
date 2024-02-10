@@ -39,4 +39,24 @@ describe('MUST request must provide b3 tracing [233a]', () => {
     const result = await lint(openApi, 'baloise');
     expect(result).toEqual([]);
   });
+
+  test('Assert b3 tracing headers valid when using path parameters', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+    openApi.paths['/example'].get.parameters = openApi.paths['/example'].get.parameters.filter(
+      (param: { $ref: string }) =>
+        !param['$ref'] &&
+        param['$ref'] !== '#/components/parameters/HeaderB3Traceid' &&
+        param['$ref'] !== '#/components/parameters/HeaderB3Spanid',
+    );
+    openApi.paths['/example'].parameters = [];
+    openApi.paths['/example'].parameters.push({
+      $ref: '#/components/parameters/HeaderB3Traceid',
+    });
+    openApi.paths['/example'].parameters.push({
+      $ref: '#/components/parameters/HeaderB3Spanid',
+    });
+
+    const result = await lint(openApi, 'baloise');
+    expect(result).toEqual([]);
+  });
 });
