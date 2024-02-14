@@ -45,15 +45,15 @@ describe('MUST request must provide b3 tracing [233a]', () => {
     openApi.paths['/example'].get.parameters = openApi.paths['/example'].get.parameters.filter(
       (param: { $ref: string }) =>
         !param['$ref'] &&
-        param['$ref'] !== '#/components/parameters/HeaderB3Traceid' &&
-        param['$ref'] !== '#/components/parameters/HeaderB3Spanid',
+        param['$ref'] !== '#/components/parameters/HeaderB3TraceId' &&
+        param['$ref'] !== '#/components/parameters/HeaderB3SpanId',
     );
     openApi.paths['/example'].parameters = [];
     openApi.paths['/example'].parameters.push({
-      $ref: '#/components/parameters/HeaderB3Traceid',
+      $ref: '#/components/parameters/HeaderB3TraceId',
     });
     openApi.paths['/example'].parameters.push({
-      $ref: '#/components/parameters/HeaderB3Spanid',
+      $ref: '#/components/parameters/HeaderB3SpanId',
     });
 
     const result = await lint(openApi, 'baloise');
