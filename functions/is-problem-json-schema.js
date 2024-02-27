@@ -45,8 +45,33 @@ const assertProblemSchema = (schema) => {
   }
 };
 
+/*
+ * Merge list of schema definitions of type = 'object'.
+ * Return object will have a super set of attributes 'properties' and 'required'.
+ */
+const mergeObjectDefinitions = (allOfTypes) => {
+  if (allOfTypes.filter((item) => item.type !== 'object').length !== 0) {
+    throw "All schema definitions must be of type 'object'";
+  }
+
+  return allOfTypes.reduce((acc, item) => {
+    return {
+      type: 'object',
+      properties: { ...(acc.properties || {}), ...(item.properties || {}) },
+      required: [...(acc.required || []), ...(item.required || [])],
+    };
+  }, {});
+};
+
 const check = (schema) => {
-  const combinedSchemas = [...(schema.anyOf || []), ...(schema.oneOf || []), ...(schema.allOf || [])];
+  const combinedSchemas = [...(schema.anyOf || [])];
+  if (schema.allOf) {
+    const mergedAllOf = mergeObjectDefinitions(schema.allOf);
+    if (mergedAllOf) {
+      combinedSchemas.push(mergedAllOf);
+    }
+  }
+
   if (combinedSchemas.length > 0) {
     combinedSchemas.forEach(check);
   } else {

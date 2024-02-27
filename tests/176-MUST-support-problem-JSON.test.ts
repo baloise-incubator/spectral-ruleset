@@ -44,4 +44,36 @@ describe('MUST support problem JSON [176]', () => {
       }),
     ]);
   });
+
+  test('Verify custom problem extending valid problem object does not cause error', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+
+    // define custom problem extending problem json
+    openApi.components.schemas['CustomValidationProblem'] = {
+      allOf: [
+        { $ref: '#/components/schemas/Problem' },
+        {
+          type: 'object',
+          required: ['title', 'status', 'detail', 'validation_error'],
+          properties: {
+            validation_error: { type: 'string' },
+          },
+        },
+      ],
+    };
+
+    openApi.paths['/example'].get.responses['400'] = {
+      description: 'bad request',
+      content: {
+        'application/problem+json': {
+          schema: {
+            $ref: '#/components/schemas/CustomValidationProblem',
+          },
+        },
+      },
+    };
+
+    const result = await lint(openApi);
+    expect(result).toEqual([]);
+  });
 });
