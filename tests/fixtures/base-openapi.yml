@@ -68,6 +68,10 @@ paths:
               properties:
                 name:
                   type: string
+                rule169:
+                  type: string
+                  format: date-time
+                  example: 2015-05-28T14:07:17Z
       responses:
         '200':
           description: ok

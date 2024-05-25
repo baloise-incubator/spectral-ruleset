@@ -168,7 +168,7 @@ npm run lint-fix # format source files
 | [#166][#166]   | [MUST not use link headers with JSON entities][#166]                                                 | - | - | - |
 | [#167][#167]   | [MUST use JSON to encode structured data][#167]                                                      | - | - | - |
 | [#168][#168]   | [MAY use non JSON media types for binary data or alternative content representations][#168]          | :grey_exclamation: | :grey_exclamation: | - |
-| [#169][#169]   | [MUST use standard date and time formats][#169]                                                      | :grey_exclamation: | :grey_exclamation: | A |
+| [#169][#169]   | [MUST use standard date and time formats][#169]                                                      | :heavy_check_mark: | - | A |
 | [#170][#170]   | [SHOULD use standards for country, language and currency codes][#170]                                | - | - | B |
 | [#171][#171]   | [MUST define format for number and integer types][#171]                                              | :heavy_check_mark: | - | - |
 | [#172][#172]   | [SHOULD prefer standard media type name `application/json`][#172]                                    | :heavy_check_mark: | :heavy_check_mark: | B |
