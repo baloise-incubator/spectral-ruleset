@@ -229,4 +229,23 @@ describe('MUST use additional standard HTTP status codes [150a]', () => {
       ]),
     );
   });
+
+  test('Detect 422 HTTP status codes for operations and warn', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+    openApi.paths['/example'] = {
+      post: {
+        responses: {
+          '422': {},
+        },
+      },
+    };
+    const result = await lint(openApi, 'baloise');
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: `Prefer 400 over 422 as response code`,
+        }),
+      ]),
+    );
+  });
 });

@@ -98,6 +98,15 @@ rules:
           - '505'
           - '511'
           - default
+  must-use-additional-standard-http-status-codes-422:
+    message: 'Prefer 400 over 422 as response code'
+    description: MUST use standard HTTP status codes [150a]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/must-use-additional-standard-http-status-codes.md
+    severity: warn
+    given: $.paths.*.*.responses.422
+    then:
+      field: '422'
+      function: defined
 
   should-use-well-understood-http-status-codes: off
 
