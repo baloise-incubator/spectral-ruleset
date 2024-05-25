@@ -1,7 +1,7 @@
 extends: [./zalando.yml] # We're extending the zalando ruleset by replacing or adding baloise specific rules.
 
 functions:
-  - validate-b3-tracing
+  - validate-tracing
   - assert-http-codes-for-operation
 
 rules:
@@ -149,21 +149,21 @@ rules:
           'default': [ ALL ]
 
 
-  # MUST request must provide b3 tracing [233a]
+  # MUST request must provide tracing [233a]
   # => Alternative to https://opensource.zalando.com/restful-api-guidelines/#233
 
-  must-use-b3-tracing:
-    message: B3 header X-B3-Traceid or X-B3-Spanid missing
-    description: MUST use b3 tracing [233a]
-    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/requests-must-use-b3-tracing.md
+  must-use-tracing:
+    message: Header X-B3-Traceid, X-B3-Spanid or traceparent (w3c) missing
+    description: MUST use b3 or w3c tracing [233a]
+    documentationUrl: https://github.com/baloise-incubator/spectral-ruleset/blob/main/doc/rules/requests-must-use-tracing.md
     severity: error
     given: $.paths.*
     then:
-      function: validate-b3-tracing
+      function: validate-tracing
 
 
-    # MUST provide API audience [219]
-    # => https://opensource.zalando.com/restful-api-guidelines/#219
+  # MUST provide API audience [219]
+  # => https://opensource.zalando.com/restful-api-guidelines/#219
 
   must-provide-api-audience: off
 
