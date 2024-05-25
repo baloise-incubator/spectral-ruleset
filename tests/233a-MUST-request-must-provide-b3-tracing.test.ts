@@ -11,8 +11,8 @@ describe('MUST request must provide b3 tracing [233a]', () => {
     const result = await lint(openApi, 'baloise');
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-use-b3-tracing',
-        message: 'B3 header X-B3-Traceid or X-B3-Spanid missing',
+        code: 'must-use-tracing',
+        message: 'Header X-B3-Traceid, X-B3-Spanid or traceparent (w3c) missing',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -27,8 +27,8 @@ describe('MUST request must provide b3 tracing [233a]', () => {
     const result = await lint(openApi, 'baloise');
     expect(result).toEqual([
       expect.objectContaining({
-        code: 'must-use-b3-tracing',
-        message: 'B3 header X-B3-Traceid or X-B3-Spanid missing',
+        code: 'must-use-tracing',
+        message: 'Header X-B3-Traceid, X-B3-Spanid or traceparent (w3c) missing',
         severity: DiagnosticSeverity.Error,
       }),
     ]);
@@ -54,6 +54,32 @@ describe('MUST request must provide b3 tracing [233a]', () => {
     });
     openApi.paths['/example'].parameters.push({
       $ref: '#/components/parameters/HeaderB3SpanId',
+    });
+
+    const result = await lint(openApi, 'baloise');
+    expect(result).toEqual([]);
+  });
+
+  test('Assert w3c tracing headers valid', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+    openApi.paths['/example'].get.parameters = openApi.paths['/example'].get.parameters.filter(
+      (param: { $ref: string }) =>
+        !param['$ref'] &&
+        param['$ref'] !== '#/components/parameters/HeaderB3TraceId' &&
+        param['$ref'] !== '#/components/parameters/HeaderB3SpanId',
+    );
+    openApi.paths['/example'].get.parameters.push({
+      $ref: '#/components/parameters/HeaderW3cTraceparent',
+    });
+
+    const result = await lint(openApi, 'baloise');
+    expect(result).toEqual([]);
+  });
+
+  test('Assert w3c and b3 tracing headers valid', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+    openApi.paths['/example'].get.parameters.push({
+      $ref: '#/components/parameters/HeaderW3cTraceparent',
     });
 
     const result = await lint(openApi, 'baloise');
