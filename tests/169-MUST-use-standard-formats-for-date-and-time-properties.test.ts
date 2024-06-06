@@ -84,4 +84,25 @@ describe('MUST use standard formats for date and time properties [169]', () => {
       }),
     ]);
   });
+
+  test('null properties should not matter', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+    openApi.paths['/example'].get.responses['200'].content['application/json']['examples'] = {
+      default: {
+        $ref: '#/components/examples/ExampleResponse',
+      },
+    };
+
+    openApi.components['examples'] = {
+      ExampleResponse: {
+        summary: 'example response with empty name',
+        value: {
+          name: null,
+        },
+      },
+    };
+
+    const result = await lint(openApi);
+    expect(result).toHaveLength(0);
+  });
 });
