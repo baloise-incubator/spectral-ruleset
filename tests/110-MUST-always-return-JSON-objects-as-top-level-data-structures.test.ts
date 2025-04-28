@@ -2,6 +2,34 @@ import { DiagnosticSeverity } from '@stoplight/types';
 import { loadOpenApiSpec, lint } from './helpers';
 
 describe('MUST always return JSON objects as top-level data structures [110]', () => {
+  test('Ensure PDF content type is ignored', async () => {
+    const openApi = await loadOpenApiSpec('base-openapi.yml');
+
+    // Ensure structure exists
+    openApi.paths['/example'] ??= {};
+    openApi.paths['/example'].get ??= {};
+    openApi.paths['/example'].get.responses ??= {};
+    openApi.paths['/example'].get.responses['200'] ??= {};
+    openApi.paths['/example'].get.responses['200'].content ??= {};
+
+    // Test unversioned application/pdf
+    openApi.paths['/example'].get.responses['200'].content['application/pdf'] = {
+      schema: {
+        type: 'array',
+      },
+    };
+
+    const result = await lint(openApi);
+
+    // Expect only a warning for the Zalando rule, but NO errors from must-always-return-json-objects-as-top-level-data-structures
+    expect(result).toEqual([
+      expect.objectContaining({
+        code: 'should-prefer-standard-media-type-names',
+        severity: DiagnosticSeverity.Warning, // Confirm that this is only a warning
+      }),
+    ]); // No errors should be raised for non-JSON content
+  });
+
   test('Detect if top-level data structure does not have a type', async () => {
     const openApi = await loadOpenApiSpec('base-openapi.yml');
     openApi.components.schemas.Example = {};
