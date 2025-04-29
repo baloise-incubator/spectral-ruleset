@@ -19,7 +19,6 @@ function addResponseContent(openApiSpec: OpenApiSpec, contentType: string): Open
 }
 
 describe('MUST always return JSON objects as top-level data structures [110]', () => {
-
   test('Validate json content type', async () => {
     let openApiSpec = await loadOpenApiSpec('base-openapi.yml');
     openApiSpec = addResponseContent(openApiSpec, 'application/json');
@@ -33,7 +32,6 @@ describe('MUST always return JSON objects as top-level data structures [110]', (
       }),
     ]);
   });
-
 
   test('Validate specific content type', async () => {
     let openApiSpec = await loadOpenApiSpec('base-openapi.yml');
