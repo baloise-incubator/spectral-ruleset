@@ -21,7 +21,7 @@ rules:
     documentationUrl: https://opensource.zalando.com/restful-api-guidelines/#110
     severity: error
     # Only target JSON content types using a more specific JSONPath
-    given: $.paths.*.*[responses,requestBody]..content['application/json'].schema
+    given: "$.paths.*.*[responses,requestBody]..content[?(@property.match(/^application\\/([a-zA-Z0-9._-]+\\+)?json(;.*)?$/))]..schema"
     then:
       function: is-object-schema
 
