@@ -9,7 +9,7 @@ describe('SHOULD limit number of sub-resource levels [147]', () => {
     expect(result).toEqual([
       expect.objectContaining({
         code: 'should-limit-number-of-sub-resource-levels',
-        message: 'Sub-resource levels should by <= 3',
+        message: 'Sub-resource levels should be <= 3',
         severity: DiagnosticSeverity.Warning,
       }),
     ]);
