@@ -5,7 +5,7 @@
 **👷🚧🛠️ in development 👷🚧🛠️**
 
 Custom [Spectral API Linter](https://github.com/stoplightio/spectral) ruleset for [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/).
-
+ 
 There are two flavors of the ruleset:
 - `zalando`: Sticks to the [Zalando RESTful API Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
 - `baloise`: Adapts some rules to the needs of [baloise](https://github.com/baloise)
